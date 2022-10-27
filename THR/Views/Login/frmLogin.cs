@@ -11,6 +11,7 @@ using THR.Dto.Login;
 using THR.Controller.Login;
 using THR.Service.CustonException;
 using THR.Views.Menu;
+using THR.Views.Message;
 
 namespace THR
 {
@@ -18,11 +19,13 @@ namespace THR
     {
         private LoginDto dto;
         private LoginController controller;
+        private MessageCuston messageCuston;
         public frmLogin()
         {
             InitializeComponent();
             dto = new LoginDto();
             controller = new LoginController();
+            messageCuston = new MessageCuston();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,7 +48,7 @@ namespace THR
             catch (ServiceException ex)
             {
 
-                MessageBox.Show(ex.Message, "THR SYSTEM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                messageCuston.MessageBoxError(ex.Message);
             }
 
 
@@ -53,7 +56,11 @@ namespace THR
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
+
     }
+
+
 }
+

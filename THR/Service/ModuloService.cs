@@ -30,35 +30,42 @@ namespace THR.Service.Login
             return dao.Access(model);
         }
 
+
         public bool DefinirAcessos(DataTable dt,string modulo)
         {
             access = new List<string>();
+
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 access.Add(dt.Rows[i]["Modulo"].ToString());
             }
 
+
+
             foreach (var teste in access)
             {
-                if (teste == "Expedição - Admin")
+
+                if (teste == modulo)
                 {
                     return true;
 
                 }
-                if (teste == "Estoque - Admin")
-                {
-                    return true;
-
-                }
-                if (teste == "Manutenção - Admin")
-                {
-
-                }
-                Console.WriteLine(teste);
 
             }
             return false;
         }
+        public string[] ListaAcessos()
+        {
+            string[] Permissoes = new string[]
+            {
+            "Expedição - Admin",
+            "Estoque - Admin",
+            "Manutenção - Admin"
+            };
+
+            return Permissoes;
+        }
     }
+
 }
