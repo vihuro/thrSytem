@@ -8,7 +8,7 @@ using THR.DAO.Connection;
 using THR.Model.Login;
 using THR.Service.CustonException;
 
-namespace THR.DAO
+namespace THR.DAO.Login
 {
     public class LoginDao
     {
@@ -39,6 +39,7 @@ namespace THR.DAO
                     {
                         model.NomeUsuario = dr["nomeUsuario"].ToString();
                     }
+
                     return true;
                 }
 
@@ -55,5 +56,6 @@ namespace THR.DAO
 
             return false;
         }
+
     }
 }

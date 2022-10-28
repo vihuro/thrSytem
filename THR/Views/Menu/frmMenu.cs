@@ -43,20 +43,6 @@ namespace THR.Views.Menu
             VoltarPosicaoBotoes();
         }
 
-        private void cooooo ()
-        {
-           /* if (!btnControleMotoristas.Enabled)
-            {
-                //btnControleMotoristas.Enabled = true;
-                btnControleMotoristas.BackColor = Color.FromArgb(128,128,128);
-                //btnControleMotoristas.ForeColor = Color.FromArgb(255,255,255);
-
-                return Color.FromArgb(128, 128, 128);
-
-            }
-            return Color.FromArgb(128, 128, 128);*/
-
-        }
 
         public static void getButton(Control c)
         {
@@ -75,7 +61,6 @@ namespace THR.Views.Menu
         private void AtivarBotoes()
         {
 
-            var permissões = modulosService.DefinirAcessos(acessos, "");
             foreach(var permissoes in modulosService.ListaAcessos())
             {
                 switch (modulosService.DefinirAcessos(acessos, permissoes))
@@ -85,17 +70,14 @@ namespace THR.Views.Menu
                         if(permissoes.Contains("Expedição"))
                         {
                             AtivarbotoesExpedicao();
-                            //btnControleMotoristas.Enabled = true;
-                            //entradaToolStripMenuItem.Enabled = true;
+
                         }
-                        else if (permissoes == "Estoque - Admin")
+                        else if (permissoes == "Estoque")
                         {
                             AtivarBotoesEstoque();
-                            //AtivarBotoesEstoque();
-                            //históricoToolStripMenuItem.Enabled = true;
+
                         }
 
-                        Console.WriteLine($"Usuário com acesso {permissoes}");
                         break;
                 }
             }
@@ -105,6 +87,7 @@ namespace THR.Views.Menu
         public void AtivarbotoesExpedicao()
         {
             btnControleMotoristas.Enabled = true;
+            btnPainelColetas.Enabled = true;
         }
         public void AtivarBotoesEstoque()
         {
@@ -112,11 +95,6 @@ namespace THR.Views.Menu
             btnPainelColetas.Enabled = true;
         }
 
-        private void entradaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmEntradaMotoristas motoristas = new frmEntradaMotoristas();
-            motoristas.Show();
-        }
 
         private void históricoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -198,11 +176,15 @@ namespace THR.Views.Menu
 
         private void btnControleMotoristas_Click(object sender, EventArgs e)
         {
-            frmEntradaMotoristas motoristas = new frmEntradaMotoristas();
+            frmControleCarregamentos motoristas = new frmControleCarregamentos(loginDto, acessos);
             motoristas.lblUsuario.Text = this.lblUsuario.Text;
             motoristas.Show();
         }
 
-
+        private void btnPainelColetas_Click(object sender, EventArgs e)
+        {
+            frmPainelCarregamentos painel = new frmPainelCarregamentos(loginDto);
+            painel.Show();
+        }
     }
 }

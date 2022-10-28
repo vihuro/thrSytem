@@ -33,9 +33,9 @@
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnControleEstoque = new System.Windows.Forms.Button();
+            this.btnEstoque = new System.Windows.Forms.Button();
             this.btnPainelColetas = new System.Windows.Forms.Button();
             this.btnControleMotoristas = new System.Windows.Forms.Button();
-            this.btnEstoque = new System.Windows.Forms.Button();
             this.btnExpedicao = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
@@ -92,6 +92,25 @@
             this.btnControleEstoque.UseVisualStyleBackColor = false;
             this.btnControleEstoque.Visible = false;
             // 
+            // btnEstoque
+            // 
+            this.btnEstoque.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEstoque.FlatAppearance.BorderSize = 0;
+            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstoque.ForeColor = System.Drawing.Color.White;
+            this.btnEstoque.Image = global::THR.Properties.Resources.box;
+            this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEstoque.Location = new System.Drawing.Point(0, 132);
+            this.btnEstoque.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(206, 33);
+            this.btnEstoque.TabIndex = 4;
+            this.btnEstoque.Text = "Estoque";
+            this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEstoque.UseVisualStyleBackColor = true;
+            this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
+            // 
             // btnPainelColetas
             // 
             this.btnPainelColetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(76)))), ((int)(((byte)(217)))));
@@ -110,6 +129,7 @@
             this.btnPainelColetas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPainelColetas.UseVisualStyleBackColor = false;
             this.btnPainelColetas.Visible = false;
+            this.btnPainelColetas.Click += new System.EventHandler(this.btnPainelColetas_Click);
             // 
             // btnControleMotoristas
             // 
@@ -130,25 +150,6 @@
             this.btnControleMotoristas.UseVisualStyleBackColor = false;
             this.btnControleMotoristas.Visible = false;
             this.btnControleMotoristas.Click += new System.EventHandler(this.btnControleMotoristas_Click);
-            // 
-            // btnEstoque
-            // 
-            this.btnEstoque.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEstoque.FlatAppearance.BorderSize = 0;
-            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoque.ForeColor = System.Drawing.Color.White;
-            this.btnEstoque.Image = global::THR.Properties.Resources.box;
-            this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEstoque.Location = new System.Drawing.Point(0, 132);
-            this.btnEstoque.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(206, 33);
-            this.btnEstoque.TabIndex = 4;
-            this.btnEstoque.Text = "Estoque";
-            this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEstoque.UseVisualStyleBackColor = true;
-            this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
             // 
             // btnExpedicao
             // 
@@ -208,7 +209,6 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip statusStrip1;
-        public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnControleEstoque;
         private System.Windows.Forms.Button btnEstoque;
@@ -216,5 +216,6 @@
         private System.Windows.Forms.Button btnControleMotoristas;
         private System.Windows.Forms.Button btnExpedicao;
         private System.Windows.Forms.Button btnMenu;
+        public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace THR.Views.Expedicao
 {
-    partial class frmEntradaMotoristas
+    partial class frmControleCarregamentos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,41 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntradaMotoristas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmControleCarregamentos));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gpStatus = new System.Windows.Forms.GroupBox();
+            this.rdbStatusFechado = new System.Windows.Forms.RadioButton();
+            this.rdbStatusAberto = new System.Windows.Forms.RadioButton();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNumeroCarregamento = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPesoTotal = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtRomaneio = new System.Windows.Forms.TextBox();
+            this.gpOndulado = new System.Windows.Forms.GroupBox();
+            this.rdbOnduladoNao = new System.Windows.Forms.RadioButton();
+            this.rdbOnduladoSim = new System.Windows.Forms.RadioButton();
+            this.gpBolha = new System.Windows.Forms.GroupBox();
+            this.rdbBolhaNao = new System.Windows.Forms.RadioButton();
+            this.rdbBolhaSim = new System.Windows.Forms.RadioButton();
+            this.gpPeriodoCarregamento = new System.Windows.Forms.GroupBox();
+            this.rdbNoite = new System.Windows.Forms.RadioButton();
+            this.rdbManha = new System.Windows.Forms.RadioButton();
+            this.cboRegiao = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboNomeMotorista = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNumeroRomanerio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNomeMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnRegiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPeriodoCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,40 +73,20 @@
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsuarioFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnFinalizar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPesoTotal = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtRomaneio = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdbOnduladoNao = new System.Windows.Forms.RadioButton();
-            this.rdbOnduladoSim = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbBolhaNao = new System.Windows.Forms.RadioButton();
-            this.rdbBolhaSim = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbNoite = new System.Windows.Forms.RadioButton();
-            this.rdbManha = new System.Windows.Forms.RadioButton();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.clnPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRelatorio = new System.Windows.Forms.Button();
+            this.btnFiltro = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpStatus.SuspendLayout();
+            this.gpOndulado.SuspendLayout();
+            this.gpBolha.SuspendLayout();
+            this.gpPeriodoCarregamento.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,21 +121,22 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.btnFinalizar);
-            this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel2.Controls.Add(this.btnAlterar);
+            this.splitContainer1.Panel2.Controls.Add(this.gpStatus);
+            this.splitContainer1.Panel2.Controls.Add(this.btnSalvar);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.txtNumeroCarregamento);
+            this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.txtPesoTotal);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.txtRomaneio);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.gpOndulado);
+            this.splitContainer1.Panel2.Controls.Add(this.gpBolha);
+            this.splitContainer1.Panel2.Controls.Add(this.gpPeriodoCarregamento);
+            this.splitContainer1.Panel2.Controls.Add(this.cboRegiao);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.cboNomeMotorista);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(1117, 526);
             this.splitContainer1.SplitterDistance = 204;
@@ -139,7 +148,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(35)))), ((int)(((byte)(103)))));
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -154,6 +163,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnNumeroCarregamento,
             this.clnNumeroRomanerio,
+            this.clnNomeMotorista,
             this.clnRegiao,
             this.clnPeriodoCarregamento,
             this.clnBolha,
@@ -162,7 +172,16 @@
             this.clnDataHoraLancamento,
             this.clnStatus,
             this.clnUsuarioFinalizacao,
-            this.clnDataHoraFinalizacao});
+            this.clnDataHoraFinalizacao,
+            this.clnPeso});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(35)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(35)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -175,74 +194,52 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1115, 202);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // clnNumeroCarregamento
+            // gpStatus
             // 
-            this.clnNumeroCarregamento.HeaderText = "Nº/Carreamento";
-            this.clnNumeroCarregamento.Name = "clnNumeroCarregamento";
-            this.clnNumeroCarregamento.ReadOnly = true;
+            this.gpStatus.Controls.Add(this.rdbStatusFechado);
+            this.gpStatus.Controls.Add(this.rdbStatusAberto);
+            this.gpStatus.Location = new System.Drawing.Point(919, 16);
+            this.gpStatus.Name = "gpStatus";
+            this.gpStatus.Size = new System.Drawing.Size(178, 61);
+            this.gpStatus.TabIndex = 12;
+            this.gpStatus.TabStop = false;
+            this.gpStatus.Text = "Status";
             // 
-            // clnNumeroRomanerio
+            // rdbStatusFechado
             // 
-            this.clnNumeroRomanerio.HeaderText = "Nº/Romaneio";
-            this.clnNumeroRomanerio.Name = "clnNumeroRomanerio";
-            this.clnNumeroRomanerio.ReadOnly = true;
+            this.rdbStatusFechado.AutoSize = true;
+            this.rdbStatusFechado.Location = new System.Drawing.Point(103, 29);
+            this.rdbStatusFechado.Name = "rdbStatusFechado";
+            this.rdbStatusFechado.Size = new System.Drawing.Size(67, 17);
+            this.rdbStatusFechado.TabIndex = 10;
+            this.rdbStatusFechado.TabStop = true;
+            this.rdbStatusFechado.Text = "Fechado";
+            this.rdbStatusFechado.UseVisualStyleBackColor = true;
             // 
-            // clnRegiao
+            // rdbStatusAberto
             // 
-            this.clnRegiao.HeaderText = "Região";
-            this.clnRegiao.Name = "clnRegiao";
-            this.clnRegiao.ReadOnly = true;
+            this.rdbStatusAberto.AutoSize = true;
+            this.rdbStatusAberto.Location = new System.Drawing.Point(6, 29);
+            this.rdbStatusAberto.Name = "rdbStatusAberto";
+            this.rdbStatusAberto.Size = new System.Drawing.Size(56, 17);
+            this.rdbStatusAberto.TabIndex = 9;
+            this.rdbStatusAberto.TabStop = true;
+            this.rdbStatusAberto.Text = "Aberto";
+            this.rdbStatusAberto.UseVisualStyleBackColor = true;
             // 
-            // clnPeriodoCarregamento
+            // btnSalvar
             // 
-            this.clnPeriodoCarregamento.HeaderText = "Período";
-            this.clnPeriodoCarregamento.Name = "clnPeriodoCarregamento";
-            this.clnPeriodoCarregamento.ReadOnly = true;
-            // 
-            // clnBolha
-            // 
-            this.clnBolha.HeaderText = "Bolha(Sim/Não)";
-            this.clnBolha.Name = "clnBolha";
-            this.clnBolha.ReadOnly = true;
-            this.clnBolha.Width = 120;
-            // 
-            // clnOndulado
-            // 
-            this.clnOndulado.HeaderText = "Ondulado(Sim/Não)";
-            this.clnOndulado.Name = "clnOndulado";
-            this.clnOndulado.ReadOnly = true;
-            this.clnOndulado.Width = 120;
-            // 
-            // clnNomeUsuarioLancamento
-            // 
-            this.clnNomeUsuarioLancamento.HeaderText = "Usuário/Lançamento";
-            this.clnNomeUsuarioLancamento.Name = "clnNomeUsuarioLancamento";
-            this.clnNomeUsuarioLancamento.ReadOnly = true;
-            // 
-            // clnDataHoraLancamento
-            // 
-            this.clnDataHoraLancamento.HeaderText = "Data/Hora Lanc.";
-            this.clnDataHoraLancamento.Name = "clnDataHoraLancamento";
-            this.clnDataHoraLancamento.ReadOnly = true;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.HeaderText = "Status";
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            // 
-            // clnUsuarioFinalizacao
-            // 
-            this.clnUsuarioFinalizacao.HeaderText = "Usuário/Fin.";
-            this.clnUsuarioFinalizacao.Name = "clnUsuarioFinalizacao";
-            this.clnUsuarioFinalizacao.ReadOnly = true;
-            // 
-            // clnDataHoraFinalizacao
-            // 
-            this.clnDataHoraFinalizacao.HeaderText = "Data/Hora Fin.";
-            this.clnDataHoraFinalizacao.Name = "clnDataHoraFinalizacao";
-            this.clnDataHoraFinalizacao.ReadOnly = true;
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.Location = new System.Drawing.Point(941, 281);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 11;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label5
             // 
@@ -253,22 +250,12 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Nº/Carregamento:";
             // 
-            // textBox1
+            // txtNumeroCarregamento
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 19;
-            // 
-            // btnFinalizar
-            // 
-            this.btnFinalizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizar.Location = new System.Drawing.Point(930, 281);
-            this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(75, 23);
-            this.btnFinalizar.TabIndex = 18;
-            this.btnFinalizar.Text = "Finalizar";
-            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.txtNumeroCarregamento.Location = new System.Drawing.Point(125, 41);
+            this.txtNumeroCarregamento.Name = "txtNumeroCarregamento";
+            this.txtNumeroCarregamento.Size = new System.Drawing.Size(100, 20);
+            this.txtNumeroCarregamento.TabIndex = 0;
             // 
             // btnCancelar
             // 
@@ -276,19 +263,9 @@
             this.btnCancelar.Location = new System.Drawing.Point(1022, 281);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAlterar.Location = new System.Drawing.Point(1022, 239);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterar.TabIndex = 16;
-            this.btnAlterar.Text = "Alterar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -304,7 +281,8 @@
             this.txtPesoTotal.Location = new System.Drawing.Point(327, 154);
             this.txtPesoTotal.Name = "txtPesoTotal";
             this.txtPesoTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtPesoTotal.TabIndex = 14;
+            this.txtPesoTotal.TabIndex = 4;
+            this.txtPesoTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesoTotal_KeyPress);
             // 
             // label3
             // 
@@ -320,18 +298,18 @@
             this.txtRomaneio.Location = new System.Drawing.Point(327, 41);
             this.txtRomaneio.Name = "txtRomaneio";
             this.txtRomaneio.Size = new System.Drawing.Size(100, 20);
-            this.txtRomaneio.TabIndex = 12;
+            this.txtRomaneio.TabIndex = 1;
             // 
-            // groupBox3
+            // gpOndulado
             // 
-            this.groupBox3.Controls.Add(this.rdbOnduladoNao);
-            this.groupBox3.Controls.Add(this.rdbOnduladoSim);
-            this.groupBox3.Location = new System.Drawing.Point(703, 199);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(178, 61);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ondulado?";
+            this.gpOndulado.Controls.Add(this.rdbOnduladoNao);
+            this.gpOndulado.Controls.Add(this.rdbOnduladoSim);
+            this.gpOndulado.Location = new System.Drawing.Point(433, 201);
+            this.gpOndulado.Name = "gpOndulado";
+            this.gpOndulado.Size = new System.Drawing.Size(178, 61);
+            this.gpOndulado.TabIndex = 11;
+            this.gpOndulado.TabStop = false;
+            this.gpOndulado.Text = "Ondulado?";
             // 
             // rdbOnduladoNao
             // 
@@ -339,7 +317,7 @@
             this.rdbOnduladoNao.Location = new System.Drawing.Point(122, 29);
             this.rdbOnduladoNao.Name = "rdbOnduladoNao";
             this.rdbOnduladoNao.Size = new System.Drawing.Size(45, 17);
-            this.rdbOnduladoNao.TabIndex = 6;
+            this.rdbOnduladoNao.TabIndex = 10;
             this.rdbOnduladoNao.TabStop = true;
             this.rdbOnduladoNao.Text = "Não";
             this.rdbOnduladoNao.UseVisualStyleBackColor = true;
@@ -350,21 +328,21 @@
             this.rdbOnduladoSim.Location = new System.Drawing.Point(6, 29);
             this.rdbOnduladoSim.Name = "rdbOnduladoSim";
             this.rdbOnduladoSim.Size = new System.Drawing.Size(42, 17);
-            this.rdbOnduladoSim.TabIndex = 5;
+            this.rdbOnduladoSim.TabIndex = 9;
             this.rdbOnduladoSim.TabStop = true;
             this.rdbOnduladoSim.Text = "Sim";
             this.rdbOnduladoSim.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // gpBolha
             // 
-            this.groupBox2.Controls.Add(this.rdbBolhaNao);
-            this.groupBox2.Controls.Add(this.rdbBolhaSim);
-            this.groupBox2.Location = new System.Drawing.Point(479, 199);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(203, 61);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Bolha?";
+            this.gpBolha.Controls.Add(this.rdbBolhaNao);
+            this.gpBolha.Controls.Add(this.rdbBolhaSim);
+            this.gpBolha.Location = new System.Drawing.Point(224, 199);
+            this.gpBolha.Name = "gpBolha";
+            this.gpBolha.Size = new System.Drawing.Size(203, 61);
+            this.gpBolha.TabIndex = 10;
+            this.gpBolha.TabStop = false;
+            this.gpBolha.Text = "Bolha?";
             // 
             // rdbBolhaNao
             // 
@@ -372,7 +350,7 @@
             this.rdbBolhaNao.Location = new System.Drawing.Point(122, 29);
             this.rdbBolhaNao.Name = "rdbBolhaNao";
             this.rdbBolhaNao.Size = new System.Drawing.Size(45, 17);
-            this.rdbBolhaNao.TabIndex = 6;
+            this.rdbBolhaNao.TabIndex = 8;
             this.rdbBolhaNao.TabStop = true;
             this.rdbBolhaNao.Text = "Não";
             this.rdbBolhaNao.UseVisualStyleBackColor = true;
@@ -383,26 +361,26 @@
             this.rdbBolhaSim.Location = new System.Drawing.Point(6, 29);
             this.rdbBolhaSim.Name = "rdbBolhaSim";
             this.rdbBolhaSim.Size = new System.Drawing.Size(42, 17);
-            this.rdbBolhaSim.TabIndex = 5;
+            this.rdbBolhaSim.TabIndex = 7;
             this.rdbBolhaSim.TabStop = true;
             this.rdbBolhaSim.Text = "Sim";
             this.rdbBolhaSim.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gpPeriodoCarregamento
             // 
-            this.groupBox1.Controls.Add(this.rdbNoite);
-            this.groupBox1.Controls.Add(this.rdbManha);
-            this.groupBox1.Location = new System.Drawing.Point(27, 199);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 61);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Período de carregamento";
+            this.gpPeriodoCarregamento.Controls.Add(this.rdbNoite);
+            this.gpPeriodoCarregamento.Controls.Add(this.rdbManha);
+            this.gpPeriodoCarregamento.Location = new System.Drawing.Point(27, 199);
+            this.gpPeriodoCarregamento.Name = "gpPeriodoCarregamento";
+            this.gpPeriodoCarregamento.Size = new System.Drawing.Size(191, 61);
+            this.gpPeriodoCarregamento.TabIndex = 9;
+            this.gpPeriodoCarregamento.TabStop = false;
+            this.gpPeriodoCarregamento.Text = "Período de carregamento";
             // 
             // rdbNoite
             // 
             this.rdbNoite.AutoSize = true;
-            this.rdbNoite.Location = new System.Drawing.Point(316, 29);
+            this.rdbNoite.Location = new System.Drawing.Point(107, 29);
             this.rdbNoite.Name = "rdbNoite";
             this.rdbNoite.Size = new System.Drawing.Size(50, 17);
             this.rdbNoite.TabIndex = 6;
@@ -421,13 +399,18 @@
             this.rdbManha.Text = "Manhã";
             this.rdbManha.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // cboRegiao
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(125, 154);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(98, 21);
-            this.comboBox2.TabIndex = 8;
+            this.cboRegiao.BackColor = System.Drawing.Color.White;
+            this.cboRegiao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegiao.FormattingEnabled = true;
+            this.cboRegiao.Items.AddRange(new object[] {
+            "",
+            "SP"});
+            this.cboRegiao.Location = new System.Drawing.Point(125, 154);
+            this.cboRegiao.Name = "cboRegiao";
+            this.cboRegiao.Size = new System.Drawing.Size(98, 21);
+            this.cboRegiao.TabIndex = 3;
             // 
             // label2
             // 
@@ -438,13 +421,18 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Zona/Região:";
             // 
-            // comboBox1
+            // cboNomeMotorista
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(302, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cboNomeMotorista.BackColor = System.Drawing.Color.White;
+            this.cboNomeMotorista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNomeMotorista.FormattingEnabled = true;
+            this.cboNomeMotorista.Items.AddRange(new object[] {
+            "",
+            "Vitor Hugo Rodrigues"});
+            this.cboNomeMotorista.Location = new System.Drawing.Point(125, 114);
+            this.cboNomeMotorista.Name = "cboNomeMotorista";
+            this.cboNomeMotorista.Size = new System.Drawing.Size(302, 21);
+            this.cboNomeMotorista.TabIndex = 2;
             // 
             // label1
             // 
@@ -458,43 +446,165 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(49)))), ((int)(((byte)(146)))));
-            this.panelMenu.Controls.Add(this.button2);
-            this.panelMenu.Controls.Add(this.button1);
+            this.panelMenu.Controls.Add(this.btnRelatorio);
+            this.panelMenu.Controls.Add(this.btnFiltro);
+            this.panelMenu.Controls.Add(this.btnNovo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(37, 526);
             this.panelMenu.TabIndex = 10;
             // 
-            // button2
+            // btnAlterar
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::THR.Properties.Resources.clipboard;
-            this.button2.Location = new System.Drawing.Point(0, 33);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(37, 33);
-            this.button2.TabIndex = 3;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAlterar.Enabled = false;
+            this.btnAlterar.Location = new System.Drawing.Point(1022, 230);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.TabIndex = 21;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
-            // button1
+            // clnNumeroCarregamento
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::THR.Properties.Resources.filter__1_;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 33);
-            this.button1.TabIndex = 2;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.clnNumeroCarregamento.DataPropertyName = "NumeroCarregamento";
+            this.clnNumeroCarregamento.HeaderText = "Nº/Carregamento";
+            this.clnNumeroCarregamento.Name = "clnNumeroCarregamento";
+            this.clnNumeroCarregamento.ReadOnly = true;
+            this.clnNumeroCarregamento.Visible = false;
             // 
-            // frmEntradaMotoristas
+            // clnNumeroRomanerio
+            // 
+            this.clnNumeroRomanerio.DataPropertyName = "NumeroRomaneio";
+            this.clnNumeroRomanerio.HeaderText = "Nº/Romaneio";
+            this.clnNumeroRomanerio.Name = "clnNumeroRomanerio";
+            this.clnNumeroRomanerio.ReadOnly = true;
+            // 
+            // clnNomeMotorista
+            // 
+            this.clnNomeMotorista.DataPropertyName = "NomeMotorista";
+            this.clnNomeMotorista.HeaderText = "Motorista";
+            this.clnNomeMotorista.Name = "clnNomeMotorista";
+            this.clnNomeMotorista.ReadOnly = true;
+            this.clnNomeMotorista.Width = 150;
+            // 
+            // clnRegiao
+            // 
+            this.clnRegiao.DataPropertyName = "Regiao";
+            this.clnRegiao.HeaderText = "Região";
+            this.clnRegiao.Name = "clnRegiao";
+            this.clnRegiao.ReadOnly = true;
+            // 
+            // clnPeriodoCarregamento
+            // 
+            this.clnPeriodoCarregamento.DataPropertyName = "Periodo";
+            this.clnPeriodoCarregamento.HeaderText = "Período";
+            this.clnPeriodoCarregamento.Name = "clnPeriodoCarregamento";
+            this.clnPeriodoCarregamento.ReadOnly = true;
+            // 
+            // clnBolha
+            // 
+            this.clnBolha.DataPropertyName = "Bolha";
+            this.clnBolha.HeaderText = "Bolha(Sim/Não)";
+            this.clnBolha.Name = "clnBolha";
+            this.clnBolha.ReadOnly = true;
+            this.clnBolha.Width = 120;
+            // 
+            // clnOndulado
+            // 
+            this.clnOndulado.DataPropertyName = "Ondulado";
+            this.clnOndulado.HeaderText = "Ondulado(Sim/Não)";
+            this.clnOndulado.Name = "clnOndulado";
+            this.clnOndulado.ReadOnly = true;
+            this.clnOndulado.Width = 120;
+            // 
+            // clnNomeUsuarioLancamento
+            // 
+            this.clnNomeUsuarioLancamento.DataPropertyName = "UsuarioLancamento";
+            this.clnNomeUsuarioLancamento.HeaderText = "Usuário/Lançamento";
+            this.clnNomeUsuarioLancamento.Name = "clnNomeUsuarioLancamento";
+            this.clnNomeUsuarioLancamento.ReadOnly = true;
+            this.clnNomeUsuarioLancamento.Visible = false;
+            // 
+            // clnDataHoraLancamento
+            // 
+            this.clnDataHoraLancamento.DataPropertyName = "DataHoraLancamento";
+            this.clnDataHoraLancamento.HeaderText = "Data/Hora Lanc.";
+            this.clnDataHoraLancamento.Name = "clnDataHoraLancamento";
+            this.clnDataHoraLancamento.ReadOnly = true;
+            this.clnDataHoraLancamento.Visible = false;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.DataPropertyName = "Status";
+            this.clnStatus.HeaderText = "Status";
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            // 
+            // clnUsuarioFinalizacao
+            // 
+            this.clnUsuarioFinalizacao.DataPropertyName = "UsuarioFim";
+            this.clnUsuarioFinalizacao.HeaderText = "Usuário/Fin.";
+            this.clnUsuarioFinalizacao.Name = "clnUsuarioFinalizacao";
+            this.clnUsuarioFinalizacao.ReadOnly = true;
+            this.clnUsuarioFinalizacao.Visible = false;
+            // 
+            // clnDataHoraFinalizacao
+            // 
+            this.clnDataHoraFinalizacao.DataPropertyName = "DataHoraFim";
+            this.clnDataHoraFinalizacao.HeaderText = "Data/Hora Fin.";
+            this.clnDataHoraFinalizacao.Name = "clnDataHoraFinalizacao";
+            this.clnDataHoraFinalizacao.ReadOnly = true;
+            this.clnDataHoraFinalizacao.Visible = false;
+            // 
+            // clnPeso
+            // 
+            this.clnPeso.DataPropertyName = "PesoTotal";
+            this.clnPeso.HeaderText = "Peso/Total";
+            this.clnPeso.Name = "clnPeso";
+            this.clnPeso.ReadOnly = true;
+            // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRelatorio.FlatAppearance.BorderSize = 0;
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Image = global::THR.Properties.Resources.clipboard;
+            this.btnRelatorio.Location = new System.Drawing.Point(0, 66);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(37, 33);
+            this.btnRelatorio.TabIndex = 2;
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFiltro.FlatAppearance.BorderSize = 0;
+            this.btnFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltro.Image = global::THR.Properties.Resources.filter__1_;
+            this.btnFiltro.Location = new System.Drawing.Point(0, 33);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(37, 33);
+            this.btnFiltro.TabIndex = 1;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNovo.FlatAppearance.BorderSize = 0;
+            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovo.Image = global::THR.Properties.Resources.plus;
+            this.btnNovo.Location = new System.Drawing.Point(0, 0);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(37, 33);
+            this.btnNovo.TabIndex = 0;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // frmControleCarregamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -504,8 +614,9 @@
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmEntradaMotoristas";
+            this.Name = "frmControleCarregamentos";
             this.Text = "Carregamento";
+            this.Load += new System.EventHandler(this.frmControleCarregamentos_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -514,12 +625,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpStatus.ResumeLayout(false);
+            this.gpStatus.PerformLayout();
+            this.gpOndulado.ResumeLayout(false);
+            this.gpOndulado.PerformLayout();
+            this.gpBolha.ResumeLayout(false);
+            this.gpBolha.PerformLayout();
+            this.gpPeriodoCarregamento.ResumeLayout(false);
+            this.gpPeriodoCarregamento.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -533,26 +646,38 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtRomaneio;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gpOndulado;
         private System.Windows.Forms.RadioButton rdbOnduladoNao;
         private System.Windows.Forms.RadioButton rdbOnduladoSim;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpBolha;
         private System.Windows.Forms.RadioButton rdbBolhaNao;
         private System.Windows.Forms.RadioButton rdbBolhaSim;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpPeriodoCarregamento;
         private System.Windows.Forms.RadioButton rdbNoite;
         private System.Windows.Forms.RadioButton rdbManha;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboRegiao;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboNomeMotorista;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPesoTotal;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNumeroCarregamento;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnRelatorio;
+        private System.Windows.Forms.Button btnFiltro;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.GroupBox gpStatus;
+        private System.Windows.Forms.RadioButton rdbStatusFechado;
+        private System.Windows.Forms.RadioButton rdbStatusAberto;
+        private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNumeroCarregamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNumeroRomanerio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnNomeMotorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRegiao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPeriodoCarregamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnBolha;
@@ -562,11 +687,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioFinalizacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraFinalizacao;
-        public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
-        private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPeso;
     }
 }

@@ -80,24 +80,46 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Expedicao\CarregamentosController.cs" />
     <Compile Include="Controller\Login\LoginController.cs" />
     <Compile Include="Controller\Login\ModuloController.cs" />
     <Compile Include="DAO\Connection\ConnectionDao.cs" />
-    <Compile Include="DAO\LoginDao.cs" />
-    <Compile Include="DAO\ModuloDao.cs" />
+    <Compile Include="DAO\Expedicao\CarregamentosDao.cs" />
+    <Compile Include="DAO\Login\LoginDao.cs" />
+    <Compile Include="DAO\Login\ModuloDao.cs" />
+    <Compile Include="Dto\Expedicao\CarregamentosDto.cs" />
     <Compile Include="Dto\Login\LoginDto.cs" />
     <Compile Include="Dto\Login\ModuloDto.cs" />
     <Compile Include="Interface\Login\Ilogin.cs" />
+    <Compile Include="Model\Expedicao\CarregamentosModel.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
     <Compile Include="Model\Login\ModuloModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service\CustonException\ServiceException.cs" />
-    <Compile Include="Service\LoginService.cs" />
-    <Compile Include="Service\ModuloService.cs" />
+    <Compile Include="Service\Expedicao\CarregamentosService.cs" />
+    <Compile Include="Service\Login\LoginService.cs" />
+    <Compile Include="Service\Login\ModuloService.cs" />
+    <Compile Include="Views\Expedicao\Filtros\frmFiltroCarregamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Expedicao\Filtros\frmFiltroCarregamento.Designer.cs">
+      <DependentUpon>frmFiltroCarregamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Expedicao\frmEntradaMotoristas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Expedicao\frmEntradaMotoristas.Designer.cs">
       <DependentUpon>frmEntradaMotoristas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Expedicao\frmPainelCarregamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Expedicao\frmPainelCarregamentos.Designer.cs">
+      <DependentUpon>frmPainelCarregamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -117,16 +139,17 @@
     <Compile Include="Views\MessageBox\MessageBox.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Views\Expedicao\Filtros\frmFiltroCarregamento.resx">
+      <DependentUpon>frmFiltroCarregamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Expedicao\frmEntradaMotoristas.resx">
       <DependentUpon>frmEntradaMotoristas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Expedicao\frmPainelCarregamentos.resx">
+      <DependentUpon>frmPainelCarregamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -149,19 +172,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Login.png" />
-    <None Include="Resources\Login1.png" />
     <None Include="Resources\hamburger.png" />
-    <None Include="Resources\truck.png" />
-    <None Include="Resources\truck %281%29.png" />
-    <None Include="Resources\truck %282%29.png" />
-    <None Include="Resources\truck %283%29.png" />
-    <None Include="Resources\truck %284%29.png" />
     <None Include="Resources\hamburger %281%29.png" />
     <None Include="Resources\cargo-truck.png" />
     <None Include="Resources\box.png" />
     <None Include="Resources\filter %281%29.png" />
     <None Include="Resources\clipboard.png" />
+    <None Include="Resources\box1.png" />
+    <None Include="Resources\plus.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

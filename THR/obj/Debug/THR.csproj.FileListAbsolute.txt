@@ -66,6 +66,8 @@ C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.csproj.CopyComplete
 C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.exe
 C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.pdb
 C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Menu.frmMenu.resources
-C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.frmEntradaMotoristas.resources
 C:\Users\thr\source\repos\THR\THR\bin\Debug\MaterialSkin.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.frmControleCarregamentos.resources
+C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.Filtros.frmFiltroCarregamento.resources
+C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.frmPainelCarregamentos.resources

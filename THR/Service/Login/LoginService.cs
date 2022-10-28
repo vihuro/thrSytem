@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using THR.DAO;
-using THR.Service.CustonException;
+﻿using THR.Service.CustonException;
 using THR.Dto.Login;
-using THR.Controller.Login;
 using THR.Model.Login;
 using System.Data;
+using THR.DAO.Login;
 
 namespace THR.Service.Login
 {
