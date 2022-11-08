@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +47,12 @@
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -63,10 +71,47 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Npgsql, Version=6.0.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.6.0.7\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.6.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.6.0.0\lib\net461\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -81,17 +126,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Expedicao\CarregamentosController.cs" />
+    <Compile Include="Controller\Expedicao\MotoristaController.cs" />
+    <Compile Include="Controller\Expedicao\RegiaoController.cs" />
     <Compile Include="Controller\Login\LoginController.cs" />
     <Compile Include="Controller\Login\ModuloController.cs" />
     <Compile Include="DAO\Connection\ConnectionDao.cs" />
     <Compile Include="DAO\Expedicao\CarregamentosDao.cs" />
+    <Compile Include="DAO\Expedicao\CoresPainelControleCarregamentosDao.cs" />
+    <Compile Include="DAO\Expedicao\MotoristaDao.cs" />
+    <Compile Include="DAO\Expedicao\RegiaoDao.cs" />
     <Compile Include="DAO\Login\LoginDao.cs" />
     <Compile Include="DAO\Login\ModuloDao.cs" />
     <Compile Include="Dto\Expedicao\CarregamentosDto.cs" />
+    <Compile Include="Dto\Expedicao\CoresPainelControleCarregamentosDto.cs" />
+    <Compile Include="Dto\Expedicao\MotoristaDto.cs" />
+    <Compile Include="Dto\Expedicao\RegiaoDto.cs" />
     <Compile Include="Dto\Login\LoginDto.cs" />
     <Compile Include="Dto\Login\ModuloDto.cs" />
     <Compile Include="Interface\Login\Ilogin.cs" />
     <Compile Include="Model\Expedicao\CarregamentosModel.cs" />
+    <Compile Include="Model\Expedicao\CoresPainelControleCarregamentosModel.cs" />
+    <Compile Include="Model\Expedicao\MotoristasModel.cs" />
+    <Compile Include="Model\Expedicao\RegiaoModel.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
     <Compile Include="Model\Login\ModuloModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -101,6 +157,9 @@
     </Compile>
     <Compile Include="Service\CustonException\ServiceException.cs" />
     <Compile Include="Service\Expedicao\CarregamentosService.cs" />
+    <Compile Include="Service\Expedicao\CoresPainelControleCarregamentosService.cs" />
+    <Compile Include="Service\Expedicao\MotoristaService.cs" />
+    <Compile Include="Service\Expedicao\RegiaoService.cs" />
     <Compile Include="Service\Login\LoginService.cs" />
     <Compile Include="Service\Login\ModuloService.cs" />
     <Compile Include="Views\Expedicao\Filtros\frmFiltroCarregamento.cs">
@@ -114,6 +173,12 @@
     </Compile>
     <Compile Include="Views\Expedicao\frmEntradaMotoristas.Designer.cs">
       <DependentUpon>frmEntradaMotoristas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Expedicao\frmGerenciarCoresPainelControleCarregamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Expedicao\frmGerenciarCoresPainelControleCarregamentos.Designer.cs">
+      <DependentUpon>frmGerenciarCoresPainelControleCarregamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Expedicao\frmPainelCarregamentos.cs">
       <SubType>Form</SubType>
@@ -148,6 +213,9 @@
     <EmbeddedResource Include="Views\Expedicao\frmEntradaMotoristas.resx">
       <DependentUpon>frmEntradaMotoristas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Expedicao\frmGerenciarCoresPainelControleCarregamentos.resx">
+      <DependentUpon>frmGerenciarCoresPainelControleCarregamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Expedicao\frmPainelCarregamentos.resx">
       <DependentUpon>frmPainelCarregamentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +248,9 @@
     <None Include="Resources\clipboard.png" />
     <None Include="Resources\box1.png" />
     <None Include="Resources\plus.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\stop-button.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -196,4 +267,11 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+  </Target>
 </Project>

@@ -25,6 +25,8 @@ namespace THR.Views.Expedicao
         private CarregamentosDto dto;
         private MessageCuston messageCuston;
         private ModuloService modulosService;
+        private RegiaoController regiaoController;
+        private MotoristaController motoristaController;
 
 
         public frmControleCarregamentos(LoginDto loginDto, DataTable acessos)
@@ -35,7 +37,44 @@ namespace THR.Views.Expedicao
             controller = new CarregamentosController(loginDto);
             messageCuston = new MessageCuston();
             modulosService = new ModuloService();
+            regiaoController = new RegiaoController();
+            motoristaController = new MotoristaController();
             CarregarDataGrid();
+            CarregarRegiao();
+            CarregarMotorista();
+
+        }
+
+        private void CarregarMotorista()
+        {
+            try
+            {
+                foreach(var itens in motoristaController.Motorista())
+                {
+                    cboNomeMotorista.Items.Add(itens);
+                }
+            }
+            catch (ServiceException ex)
+            {
+
+                messageCuston.MessageBoxError(ex.Message);
+            }
+        }
+
+        private void CarregarRegiao()
+        {
+            try
+            {
+                foreach (var itens in regiaoController.Regiao())
+                {
+                    cboRegiao.Items.Add(itens);
+                }
+            }
+            catch (ServiceException ex)
+            {
+
+                messageCuston.MessageBoxError(ex.Message);
+            }
 
         }
 
@@ -221,6 +260,7 @@ namespace THR.Views.Expedicao
                 dto.Bolha = VerificarBolha(gpBolha);
                 dto.Ondulado = VerificarOndulado(gpOndulado);
                 dto.Status = VerificaStatus(gpStatus);
+                dto.DataHoraLancamento = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
                 dto.PesoTotal = txtPesoTotal.Text;
                 controller.Update(dto);
 
@@ -247,11 +287,20 @@ namespace THR.Views.Expedicao
                 txtRomaneio.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 cboNomeMotorista.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 cboRegiao.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                txtPesoTotal.Text = dataGridView1.SelectedRows[0].Cells[12].Value.ToString();
+                txtPesoTotal.Text = dataGridView1.SelectedRows[0].Cells[13].Value.ToString();
 
                 VerificarCheckeds();
 
                 VerificaPermissao();
+
+                if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
+                {
+                    btnAlterar.Enabled = false;
+                }
+                else
+                {
+                    btnAlterar.Enabled = true;
+                }
 
             }
         }

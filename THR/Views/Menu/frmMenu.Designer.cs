@@ -38,6 +38,7 @@
             this.btnControleMotoristas = new System.Windows.Forms.Button();
             this.btnExpedicao = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
+            this.btnGerenciarCoresPainel = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -63,8 +64,9 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(49)))), ((int)(((byte)(146)))));
             this.panelMenu.Controls.Add(this.btnControleEstoque);
             this.panelMenu.Controls.Add(this.btnEstoque);
-            this.panelMenu.Controls.Add(this.btnPainelColetas);
+            this.panelMenu.Controls.Add(this.btnGerenciarCoresPainel);
             this.panelMenu.Controls.Add(this.btnControleMotoristas);
+            this.panelMenu.Controls.Add(this.btnPainelColetas);
             this.panelMenu.Controls.Add(this.btnExpedicao);
             this.panelMenu.Controls.Add(this.btnMenu);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -82,7 +84,7 @@
             this.btnControleEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnControleEstoque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnControleEstoque.ForeColor = System.Drawing.Color.White;
-            this.btnControleEstoque.Location = new System.Drawing.Point(0, 165);
+            this.btnControleEstoque.Location = new System.Drawing.Point(0, 198);
             this.btnControleEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.btnControleEstoque.Name = "btnControleEstoque";
             this.btnControleEstoque.Size = new System.Drawing.Size(206, 33);
@@ -101,7 +103,7 @@
             this.btnEstoque.ForeColor = System.Drawing.Color.White;
             this.btnEstoque.Image = global::THR.Properties.Resources.box;
             this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEstoque.Location = new System.Drawing.Point(0, 132);
+            this.btnEstoque.Location = new System.Drawing.Point(0, 165);
             this.btnEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(206, 33);
@@ -120,7 +122,7 @@
             this.btnPainelColetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPainelColetas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPainelColetas.ForeColor = System.Drawing.Color.White;
-            this.btnPainelColetas.Location = new System.Drawing.Point(0, 99);
+            this.btnPainelColetas.Location = new System.Drawing.Point(0, 66);
             this.btnPainelColetas.Margin = new System.Windows.Forms.Padding(0);
             this.btnPainelColetas.Name = "btnPainelColetas";
             this.btnPainelColetas.Size = new System.Drawing.Size(206, 33);
@@ -140,7 +142,7 @@
             this.btnControleMotoristas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnControleMotoristas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnControleMotoristas.ForeColor = System.Drawing.Color.White;
-            this.btnControleMotoristas.Location = new System.Drawing.Point(0, 66);
+            this.btnControleMotoristas.Location = new System.Drawing.Point(0, 99);
             this.btnControleMotoristas.Margin = new System.Windows.Forms.Padding(0);
             this.btnControleMotoristas.Name = "btnControleMotoristas";
             this.btnControleMotoristas.Size = new System.Drawing.Size(206, 33);
@@ -186,6 +188,25 @@
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
+            // btnGerenciarCoresPainel
+            // 
+            this.btnGerenciarCoresPainel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(76)))), ((int)(((byte)(217)))));
+            this.btnGerenciarCoresPainel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGerenciarCoresPainel.Enabled = false;
+            this.btnGerenciarCoresPainel.FlatAppearance.BorderSize = 0;
+            this.btnGerenciarCoresPainel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerenciarCoresPainel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerenciarCoresPainel.ForeColor = System.Drawing.Color.White;
+            this.btnGerenciarCoresPainel.Location = new System.Drawing.Point(0, 132);
+            this.btnGerenciarCoresPainel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGerenciarCoresPainel.Name = "btnGerenciarCoresPainel";
+            this.btnGerenciarCoresPainel.Size = new System.Drawing.Size(206, 33);
+            this.btnGerenciarCoresPainel.TabIndex = 7;
+            this.btnGerenciarCoresPainel.Text = "Gerenciar cores do Painel";
+            this.btnGerenciarCoresPainel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGerenciarCoresPainel.UseVisualStyleBackColor = false;
+            this.btnGerenciarCoresPainel.Click += new System.EventHandler(this.btnGerenciarCoresPainel_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +238,6 @@
         private System.Windows.Forms.Button btnExpedicao;
         private System.Windows.Forms.Button btnMenu;
         public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
+        private System.Windows.Forms.Button btnGerenciarCoresPainel;
     }
 }

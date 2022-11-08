@@ -7,15 +7,22 @@ using THR.DAO.Connection;
 using System.Data;
 using THR.Model.Login;
 using System;
+using Npgsql;
 
 namespace THR.DAO.Login
 {
     internal class ModuloDao
     {
+        //Conexoes Access
         private OleDbCommand cmd;
         private OleDbDataReader dr;
         private ConnectionDao con;
         private OleDbDataAdapter da;
+
+        //Conexoes Postgres
+        //private NpgsqlCommand cmd;
+        //private NpgsqlDataReader dr;
+        //private NpgsqlDataAdapter da;
         private DataTable dt;
         public ModuloDao()
         {
@@ -29,7 +36,7 @@ namespace THR.DAO.Login
             cmd.Parameters.AddWithValue("", model.Apelido);
             try
             {
-                cmd.Connection = con.conectar();
+                cmd.Connection = con.Conectar();
                 da = new OleDbDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);

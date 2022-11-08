@@ -20,6 +20,7 @@ namespace THR.Dto.Expedicao
         private string status;
         private string usuarioFinalizacao;
         private string dataHoraFinalizacao;
+        private string tempoEspera;
         private string pesoTotal;
 
         public string NumeroCarregamento { get => numeroCarregamento; set => numeroCarregamento = value; }
@@ -34,6 +35,7 @@ namespace THR.Dto.Expedicao
         public string Status { get => status; set => status = value; }
         public string UsuarioFinalizacao { get => usuarioFinalizacao; set => usuarioFinalizacao = value; }
         public string DataHoraFinalizacao { get => dataHoraFinalizacao; set => dataHoraFinalizacao = value; }
+        public string TempoEspera { get => tempoEspera; set => tempoEspera = value; }
         public string PesoTotal { get => pesoTotal; set => pesoTotal = value; }
     }
 }

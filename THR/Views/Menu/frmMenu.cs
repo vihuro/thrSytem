@@ -88,6 +88,7 @@ namespace THR.Views.Menu
         {
             btnControleMotoristas.Enabled = true;
             btnPainelColetas.Enabled = true;
+            btnGerenciarCoresPainel.Enabled = true;
         }
         public void AtivarBotoesEstoque()
         {
@@ -110,6 +111,7 @@ namespace THR.Views.Menu
                 btnMenu.ImageAlign = ContentAlignment.MiddleRight;
                 btnExpedicao.Text = "Expedição";
                 btnEstoque.Text = "Estoque";
+                btnGerenciarCoresPainel.Text = "Gerenciar cores do Painel";
             }
         }
 
@@ -127,6 +129,7 @@ namespace THR.Views.Menu
                 panelMenu.Width = 206;
                 btnExpedicao.Text = "Expedição";
                 btnEstoque.Text = "Estoque";
+                btnGerenciarCoresPainel.Text = "Gerenciar cores do Painel";
 
             }
         }
@@ -138,8 +141,10 @@ namespace THR.Views.Menu
             btnControleMotoristas.Visible = false;
             btnPainelColetas.Visible = false;
             btnControleEstoque.Visible = false;
+            btnGerenciarCoresPainel.Visible = false;
             btnExpedicao.Text = "";
             btnEstoque.Text = "";
+            btnGerenciarCoresPainel.Text = "";
         }
 
         private void btnEstoque_Click(object sender, EventArgs e)
@@ -164,12 +169,14 @@ namespace THR.Views.Menu
 
                 btnPainelColetas.Visible = true;
                 btnControleMotoristas.Visible = true;
+                btnGerenciarCoresPainel.Visible = true;
             }
             else
             {
 
                 btnControleMotoristas.Visible = false;
                 btnPainelColetas.Visible = false;
+                btnGerenciarCoresPainel.Visible = false;
 
             }
         }
@@ -185,6 +192,13 @@ namespace THR.Views.Menu
         {
             frmPainelCarregamentos painel = new frmPainelCarregamentos(loginDto);
             painel.Show();
+        }
+
+        private void btnGerenciarCoresPainel_Click(object sender, EventArgs e)
+        {
+            frmGerenciarCoresPainelControleCarregamentos cores = new frmGerenciarCoresPainelControleCarregamentos(loginDto);
+            cores.lblUsuario.Text = this.lblUsuario.Text;
+            cores.Show();
         }
     }
 }

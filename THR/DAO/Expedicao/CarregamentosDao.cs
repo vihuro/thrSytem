@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Data;
 using System.Data.OleDb;
 using THR.DAO.Connection;
@@ -9,10 +10,16 @@ namespace THR.DAO.Expedicao
 {
     internal class CarregamentosDao
     {
+        //Conexoes Access
         private OleDbCommand cmd;
         private OleDbDataReader dr;
         private ConnectionDao con;
         private OleDbDataAdapter da;
+
+        //Conexoes  Postegres
+        //private NpgsqlCommand cmd;
+        //private NpgsqlDataReader dr;
+        //private NpgsqlDataAdapter da;
         private DataTable dt;
 
         public CarregamentosDao()
@@ -38,7 +45,7 @@ namespace THR.DAO.Expedicao
             cmd.Parameters.AddWithValue("", model.PesoTotal);
             try
             {
-                cmd.Connection = con.conectar();
+                cmd.Connection = con.Conectar();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -62,7 +69,8 @@ namespace THR.DAO.Expedicao
                                                         "PesoTotal = @PesoTotal," +
                                                         "Status = @Status," +
                                                         "UsuarioFim = @UsuarioFim," +
-                                                        "DataHoraFim = @DataHoraFim where " +
+                                                        "DataHoraFim = @DataHoraFim," +
+                                                        "TempoEspera = @TempoEspera where " +
                                                         "NumeroCarregamento = @NumeroCarregamento";
             cmd.Parameters.AddWithValue("", model.NumeroRomaneio);
             cmd.Parameters.AddWithValue("", model.NomeMotorista);
@@ -74,16 +82,53 @@ namespace THR.DAO.Expedicao
             cmd.Parameters.AddWithValue("", model.Status);
             cmd.Parameters.AddWithValue("", model.UsuarioFinalizacao);
             cmd.Parameters.AddWithValue("", model.DataHoraFinalizacao);
+            cmd.Parameters.AddWithValue("", model.TempoEspera);
             cmd.Parameters.AddWithValue("", model.NumeroCarregamento);
 
 
             try
             {
-                cmd.Connection = con.conectar();
+                cmd.Connection = con.Conectar();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
+                throw new ServiceException(ex.Message);
+            }
+            finally
+            {
+                con.Desconectar();
+            }
+        }
+
+        public bool VerificarStatus(CarregamentosModel model)
+        {
+            cmd = new OleDbCommand();
+            cmd.CommandText = "SELECT * FROM tab_Carregamentos WHERE NumeroCarregamento = @NumeroCarregamento";
+            cmd.Parameters.AddWithValue("", model.NumeroCarregamento);
+            try
+            {
+                cmd.Connection = con.Conectar();
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        if (dr["Status"].ToString() == "FECHADO")
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+
                 throw new ServiceException(ex.Message);
             }
             finally
@@ -98,7 +143,7 @@ namespace THR.DAO.Expedicao
             cmd.CommandText = "Select * from tab_Carregamentos order by numeroCarregamento asc";
             try
             {
-                cmd.Connection = con.conectar();
+                cmd.Connection = con.Conectar();
                 da = new OleDbDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);

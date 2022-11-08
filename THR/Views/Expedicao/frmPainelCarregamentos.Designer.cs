@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPainelCarregamentos));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNumeroRomaneio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,8 +45,14 @@
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsuarioFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPesoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -78,6 +86,7 @@
             this.clnStatus,
             this.clnUsuarioFim,
             this.clnDataHoraFinalizacao,
+            this.clnTempoEspera,
             this.clnPesoTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(237)))));
@@ -89,7 +98,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(37, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -97,7 +106,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(805, 545);
+            this.dataGridView1.Size = new System.Drawing.Size(921, 545);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -127,9 +136,10 @@
             // clnRegião
             // 
             this.clnRegião.DataPropertyName = "Regiao";
-            this.clnRegião.HeaderText = "Região.";
+            this.clnRegião.HeaderText = "Região";
             this.clnRegião.Name = "clnRegião";
             this.clnRegião.ReadOnly = true;
+            this.clnRegião.Width = 120;
             // 
             // clnPeriodo
             // 
@@ -193,6 +203,13 @@
             this.clnDataHoraFinalizacao.ReadOnly = true;
             this.clnDataHoraFinalizacao.Visible = false;
             // 
+            // clnTempoEspera
+            // 
+            this.clnTempoEspera.DataPropertyName = "TempoEspera";
+            this.clnTempoEspera.HeaderText = "Tempo";
+            this.clnTempoEspera.Name = "clnTempoEspera";
+            this.clnTempoEspera.ReadOnly = true;
+            // 
             // clnPesoTotal
             // 
             this.clnPesoTotal.DataPropertyName = "PesoTotal";
@@ -200,16 +217,60 @@
             this.clnPesoTotal.Name = "clnPesoTotal";
             this.clnPesoTotal.ReadOnly = true;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(217)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.btnStop);
+            this.panel1.Controls.Add(this.btnPlay);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(37, 545);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnStop
+            // 
+            this.btnStop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Image = global::THR.Properties.Resources.stop_button;
+            this.btnStop.Location = new System.Drawing.Point(0, 33);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(37, 33);
+            this.btnStop.TabIndex = 1;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPlay.FlatAppearance.BorderSize = 0;
+            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlay.Image = global::THR.Properties.Resources.play;
+            this.btnPlay.Location = new System.Drawing.Point(0, 0);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(37, 33);
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
             // frmPainelCarregamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 545);
+            this.ClientSize = new System.Drawing.Size(958, 545);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPainelCarregamentos";
             this.Text = "Painel de carregamentos";
             this.Load += new System.EventHandler(this.frmPainelCarregamentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -217,6 +278,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnPlay;
+        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNumeroCarregamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNumeroRomaneio;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNomeMotorista;
@@ -229,6 +294,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioFim;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraFinalizacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnTempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPesoTotal;
     }
 }

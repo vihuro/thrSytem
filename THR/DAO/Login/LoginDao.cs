@@ -1,21 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using THR.DAO.Connection;
 using THR.Model.Login;
 using THR.Service.CustonException;
+using Npgsql;
 
 namespace THR.DAO.Login
 {
     public class LoginDao
     {
+        //Conexoes Access
         private OleDbCommand cmd;
         private OleDbDataReader dr;
         private ConnectionDao con;
         private OleDbDataAdapter da;
+
+        
+        //Conexoes Postgres
+        //private NpgsqlCommand cmd;
+        //private NpgsqlDataReader dr;
+        //private NpgsqlDataAdapter da;
 
         public LoginDao()
         {
@@ -30,7 +34,7 @@ namespace THR.DAO.Login
             cmd.Parameters.AddWithValue("",model.Senha);
             try
             {
-                cmd.Connection = con.conectar();
+                cmd.Connection = con.Conectar();
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
@@ -47,7 +51,7 @@ namespace THR.DAO.Login
             catch (Exception ex)
             {
 
-                throw new ServiceException(ex.Message);
+                throw new ServiceException(ex.ToString());
             }
             finally
             {
