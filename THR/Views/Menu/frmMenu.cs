@@ -37,15 +37,20 @@ namespace THR.Views.Menu
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             AtivarBotoes();
             //ColorirBotoes();
             getButton(panelMenu);
             VoltarPosicaoBotoes();
+
+            this.Cursor = Cursors.Default;
         }
 
 
         public static void getButton(Control c)
         {
+            
             for(int i = 0; i < c.Controls.Count; i++)
             {
                 if (c.Controls[i] is Button)
@@ -86,9 +91,27 @@ namespace THR.Views.Menu
 
         public void AtivarbotoesExpedicao()
         {
-            btnControleMotoristas.Enabled = true;
+
             btnPainelColetas.Enabled = true;
-            btnGerenciarCoresPainel.Enabled = true;
+
+            foreach (var permissoes in modulosService.ListaAcessos())
+            {
+                switch (modulosService.DefinirAcessos(acessos, permissoes))
+                {
+                    case true:
+                        if(permissoes == "Expedição - Admin" || permissoes == "Expedição - Painel")
+                        {
+                            btnControleMotoristas.Enabled = true;
+                            if(permissoes == "Expedição - Admin")
+                            {
+                                btnGerenciarCoresPainel.Enabled = true;
+                            }
+                        }
+
+                        break;
+                }
+            }
+
         }
         public void AtivarBotoesEstoque()
         {
@@ -118,7 +141,9 @@ namespace THR.Views.Menu
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            if(panelMenu.Width == 206)
+            this.Cursor = Cursors.WaitCursor;
+
+            if (panelMenu.Width == 206)
             {
                 VoltarPosicaoBotoes();
 
@@ -132,10 +157,14 @@ namespace THR.Views.Menu
                 btnGerenciarCoresPainel.Text = "Gerenciar cores do Painel";
 
             }
+
+            this.Cursor = Cursors.Default;
         }
 
         private void VoltarPosicaoBotoes()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             panelMenu.Width = 37;
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
             btnControleMotoristas.Visible = false;
@@ -145,11 +174,15 @@ namespace THR.Views.Menu
             btnExpedicao.Text = "";
             btnEstoque.Text = "";
             btnGerenciarCoresPainel.Text = "";
+
+            this.Cursor = Cursors.Default;
         }
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
-            if(btnControleEstoque.Visible == false)
+            this.Cursor = Cursors.WaitCursor;
+
+            if (btnControleEstoque.Visible == false)
             {
                 VerificarPosicaoPanelMenu();
                 btnControleEstoque.Visible = true;
@@ -159,10 +192,13 @@ namespace THR.Views.Menu
                 btnControleEstoque.Visible = false;
 
             }
+            this.Cursor = Cursors.Default;
         }
 
         private void btnExpedicao_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             if (btnControleMotoristas.Visible == false)
             {
                 VerificarPosicaoPanelMenu();
@@ -179,26 +215,40 @@ namespace THR.Views.Menu
                 btnGerenciarCoresPainel.Visible = false;
 
             }
+
+            this.Cursor = Cursors.Default;
         }
 
         private void btnControleMotoristas_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             frmControleCarregamentos motoristas = new frmControleCarregamentos(loginDto, acessos);
             motoristas.lblUsuario.Text = this.lblUsuario.Text;
             motoristas.Show();
+
+            this.Cursor = Cursors.Default;
         }
 
         private void btnPainelColetas_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             frmPainelCarregamentos painel = new frmPainelCarregamentos(loginDto);
             painel.Show();
+
+            this.Cursor = Cursors.Default;
         }
 
         private void btnGerenciarCoresPainel_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             frmGerenciarCoresPainelControleCarregamentos cores = new frmGerenciarCoresPainelControleCarregamentos(loginDto);
             cores.lblUsuario.Text = this.lblUsuario.Text;
             cores.Show();
+
+            this.Cursor = Cursors.Default;
         }
     }
 }

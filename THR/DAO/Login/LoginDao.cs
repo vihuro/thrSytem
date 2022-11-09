@@ -51,7 +51,7 @@ namespace THR.DAO.Login
             catch (Exception ex)
             {
 
-                throw new ServiceException(ex.ToString());
+                throw new ServiceException(ex.Message);
             }
             finally
             {

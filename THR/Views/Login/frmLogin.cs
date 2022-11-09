@@ -30,6 +30,8 @@ namespace THR
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             dto.Apelido = txtUsuario.Text;
             dto.Senha = txtSenha.Text;
             try
@@ -50,7 +52,10 @@ namespace THR
 
                 messageCuston.MessageBoxError(ex.Message);
             }
-
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
 
         }
 
@@ -59,6 +64,14 @@ namespace THR
             this.Close();
         }
 
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+            }
+        }
     }
 
 

@@ -47,6 +47,8 @@ namespace THR.Views.Expedicao
 
         private void CarregarMotorista()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             try
             {
                 foreach(var itens in motoristaController.Motorista())
@@ -59,10 +61,14 @@ namespace THR.Views.Expedicao
 
                 messageCuston.MessageBoxError(ex.Message);
             }
+
+            this.Cursor = Cursors.Default;
         }
 
         private void CarregarRegiao()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             try
             {
                 foreach (var itens in regiaoController.Regiao())
@@ -76,18 +82,35 @@ namespace THR.Views.Expedicao
                 messageCuston.MessageBoxError(ex.Message);
             }
 
+            this.Cursor = Cursors.Default;
+
         }
 
         private void CarregarDataGrid()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             try
             {
                 dataGridView1.DataSource = controller.SelectTable();
+
+                for(int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (i == dataGridView1.Rows.Count - 1)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[1];
+                        break;
+                    }
+                }
             }
             catch (ServiceException ex)
             {
 
                 messageCuston.MessageBoxError(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
 
         }
@@ -161,6 +184,8 @@ namespace THR.Views.Expedicao
 
         private void ClearAll()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             txtRomaneio.Text = string.Empty;
             txtNumeroCarregamento.Text = string.Empty;
             cboNomeMotorista.Text = string.Empty;
@@ -176,6 +201,8 @@ namespace THR.Views.Expedicao
             rdbStatusFechado.Checked = false;
             dataGridView1.ClearSelection();
             VerificaPermissao();
+
+            this.Cursor = Cursors.Default;
         }
 
         private void frmControleCarregamentos_Load(object sender, EventArgs e)
@@ -264,7 +291,7 @@ namespace THR.Views.Expedicao
                 dto.PesoTotal = txtPesoTotal.Text;
                 controller.Update(dto);
 
-                CarregarDataGrid();
+                CarregarDataGridNumero(dto.NumeroCarregamento);
 
                 ClearAll();
 
@@ -279,9 +306,39 @@ namespace THR.Views.Expedicao
             this.Cursor = Cursors.Default;
         }
 
+        private void CarregarDataGridNumero(string numeroCarregamento)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                dataGridView1.DataSource = controller.SelectTable();
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == numeroCarregamento)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[1];
+                        break;
+                    }
+                }
+            }
+            catch (ServiceException ex)
+            {
+
+                messageCuston.MessageBoxError(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count > 0)
+            this.Cursor = Cursors.WaitCursor;
+
+            if (dataGridView1.SelectedRows.Count > 0)
             {
                 txtNumeroCarregamento.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 txtRomaneio.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
@@ -303,6 +360,8 @@ namespace THR.Views.Expedicao
                 }
 
             }
+            this.Cursor = Cursors.Default;
+
         }
 
         private void VerificaPermissao()
@@ -374,6 +433,35 @@ namespace THR.Views.Expedicao
             else
             {
                 rdbStatusFechado.Checked = true;
+            }
+        }
+
+        private void txtRomaneio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                for(int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[1].Value.ToString() == txtRomaneio.Text)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[1];
+                        break;
+                    }
+                    else if(i == dataGridView1.Rows.Count - 1)
+                    {
+                        messageCuston.MessageBoxWarning("Romaneio não encontrado!");
+                    }
+                }
+
+            }
+        }
+
+        private void frmControleCarregamentos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                CarregarDataGrid();
+                ClearAll();
             }
         }
     }

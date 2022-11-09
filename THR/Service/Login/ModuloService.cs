@@ -60,7 +60,8 @@ namespace THR.Service.Login
             string[] Permissoes = new string[]
             {
             "Expedição - Admin",
-            "Expedição - User",
+            "Expedição - Alterações",
+            "Expedição - Painel",
             "Estoque - Admin",
             "Manutenção - Admin"
             };

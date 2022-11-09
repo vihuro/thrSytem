@@ -41,6 +41,8 @@ namespace THR.Views.Expedicao
 
         private void CarregarGrid()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             try
             {
                 dataGridView1.DataSource = service.SelectTable();
@@ -52,6 +54,10 @@ namespace THR.Views.Expedicao
             {
 
                 messageCuston.MessageBoxError(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -97,70 +103,6 @@ namespace THR.Views.Expedicao
                     Salvar();
                     CarregarGrid();
 
-                    /*for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                    {
-                        if (dataGridView1.Columns[i].DataPropertyName == cboColuna.Text)
-                        {
-                            for (int y = 0; y < dataGridView1.Rows.Count; y++)
-                            {
-                                if (cboColuna.Text == "PesoTotal" && dataGridView1.Rows[y].Cells[i].Value.ToString() != string.Empty)
-                                {
-                                    double PesoTotal = Convert.ToDouble(dataGridView1.Rows[y].Cells[i].Value);
-                                    double Condicao = 0;
-                                    if (rdbPrimeiraCondicao.Checked)
-                                    {
-                                        Condicao = Convert.ToDouble(txtPrimeiroValor.Text);
-                                        if (cboPrimeiraCondicao.Text == "MAIOR")
-                                        {
-                                            if (PesoTotal > Condicao)
-                                            {
-                                                dataGridView1.Rows[y].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
-                                                dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
-                                            }
-                                        }
-                                        if (cboPrimeiraCondicao.Text == "MENOR")
-                                        {
-                                            if (PesoTotal < Condicao)
-                                            {
-                                                dataGridView1.Rows[y].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
-                                                dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
-                                            }
-                                        }
-                                    }
-                                    else if (rdbSegundaCondicao.Checked)
-                                    {
-                                        Condicao = Convert.ToDouble(txtSegundoValor.Text);
-                                        if (cboSegundaCondicao.Text == "MAIOR")
-                                        {
-                                            if (PesoTotal > Condicao)
-                                            {
-                                                dataGridView1.Rows[y].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
-                                                dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
-                                            }
-                                        }
-                                        if (cboSegundaCondicao.Text == "MENOR")
-                                        {
-                                            if (PesoTotal < Condicao)
-                                            {
-                                                dataGridView1.Rows[y].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
-                                                dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
-                                            }
-                                        }
-                                    }
-
-                                }
-                                else if (dataGridView1.Rows[y].Cells[i].Value.ToString() == cboPalavraChave.Text &&
-                                    dataGridView1.Rows[y].Cells[i].Value.ToString() != string.Empty)
-                                {
-                                    dataGridView1.Rows[y].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
-                                    dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
-                                }
-                            }
-
-                            break;
-                        }
-                    }*/
-
                 }
 
             }
@@ -169,13 +111,16 @@ namespace THR.Views.Expedicao
 
                 messageCuston.MessageBoxError(ex.Message);
             }
-
-            this.Cursor = Cursors.Default;
-
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         private void Salvar()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             coresDto = new CoresPainelControleCarregamentosDto();
             coresDto.PalavraChave = cboPalavraChave.Text;
             coresDto.Coluna = cboColuna.Text;
@@ -213,6 +158,10 @@ namespace THR.Views.Expedicao
             {
 
                 messageCuston.MessageBoxError(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -253,8 +202,16 @@ namespace THR.Views.Expedicao
                 rdbPrimeiraCondicao.Enabled = true;
                 rdbSegundaCondicao.Enabled = true;
 
+                cboPrimeiraCondicao.Items.Clear();
+                cboSegundaCondicao.Items.Clear();
+
+
+
                 cboPrimeiraCondicao.Items.Add("MAIOR");
                 cboPrimeiraCondicao.Items.Add("MENOR");
+
+                cboSegundaCondicao.Items.Add("MAIOR");
+                cboSegundaCondicao.Items.Add("MENOR");
 
                 txtPrimeiroValor.Text = "0";
                 txtSegundoValor.Text = "0";
@@ -284,6 +241,8 @@ namespace THR.Views.Expedicao
 
         private void CarregarComboBox()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             cboPalavraChave.Items.Clear();
             for (int i = 0; i < dataGridView1.ColumnCount; i++)
             {
@@ -295,6 +254,8 @@ namespace THR.Views.Expedicao
                     }
                 }
             }
+
+            this.Cursor = Cursors.Default;
 
         }
 
@@ -318,9 +279,6 @@ namespace THR.Views.Expedicao
                     }
                 }
             }
-
-
-
         }
 
         private void cboPalavraChave_SelectedValueChanged(object sender, EventArgs e)
@@ -379,56 +337,71 @@ namespace THR.Views.Expedicao
 
         private void VerificarCoresBancoDados()
         {
+            this.Cursor = Cursors.WaitCursor;
+
             var dataTable = coresService.SelectTableColors();
-            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            try
             {
-                var col = dataGridView1.Columns[i].DataPropertyName;
-                var linha = dataTable.Select($"Coluna = '{dataGridView1.Columns[i].DataPropertyName}'");
-
-                if (linha.Count() > 0)
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
-                    for (int j = 0; j < linha.Count(); j++)
+                    var col = dataGridView1.Columns[i].DataPropertyName;
+                    var linha = dataTable.Select($"Coluna = '{dataGridView1.Columns[i].DataPropertyName}'");
+
+                    if (linha.Count() > 0)
                     {
-                        int R = Convert.ToInt32(linha[j]["RCelula"]);
-                        int G = Convert.ToInt32(linha[j]["GCelula"]);
-                        int B = Convert.ToInt32(linha[j]["BCelula"]);
-
-                        int RLetra = Convert.ToInt32(linha[j]["RLetra"]);
-                        int GLetra = Convert.ToInt32(linha[j]["GLetra"]);
-                        int BLetra = Convert.ToInt32(linha[j]["BLetra"]);
-
-                        if (dataGridView1.Columns[i].DataPropertyName == "PesoTotal")
+                        for (int j = 0; j < linha.Count(); j++)
                         {
-                            ColorirDataGridCondicaoPeso(dataGridView1.Columns[i].DataPropertyName,
-                                            linha[j]["Condicao"].ToString(),
-                                            linha[j]["Valor"].ToString(),
-                                            R, G, B,
-                                            RLetra, GLetra, BLetra);
-                        }
-                        else if(dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
-                        {
-                            ColorirDataGridCondicaoTempo(dataGridView1.Columns[i].DataPropertyName,
-                                            linha[j]["Condicao"].ToString(),
-                                            linha[j]["Valor"].ToString(),
-                                            R, G, B,
-                                            RLetra, GLetra, BLetra);
-                        }
-                        else
-                        {
-                            ColorirDataGrid(dataGridView1.Columns[i].DataPropertyName,
-                                            linha[j]["PalavraChave"].ToString(),
-                                            R, G, B,
-                                            RLetra, GLetra, BLetra);
+                            int R = Convert.ToInt32(linha[j]["RCelula"]);
+                            int G = Convert.ToInt32(linha[j]["GCelula"]);
+                            int B = Convert.ToInt32(linha[j]["BCelula"]);
 
+                            int RLetra = Convert.ToInt32(linha[j]["RLetra"]);
+                            int GLetra = Convert.ToInt32(linha[j]["GLetra"]);
+                            int BLetra = Convert.ToInt32(linha[j]["BLetra"]);
+
+                            if (dataGridView1.Columns[i].DataPropertyName == "PesoTotal")
+                            {
+                                ColorirDataGridCondicaoPeso(dataGridView1.Columns[i].DataPropertyName,
+                                                linha[j]["Condicao"].ToString(),
+                                                linha[j]["Valor"].ToString(),
+                                                R, G, B,
+                                                RLetra, GLetra, BLetra);
+                            }
+                            else if (dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
+                            {
+                                ColorirDataGridCondicaoTempo(dataGridView1.Columns[i].DataPropertyName,
+                                                linha[j]["Condicao"].ToString(),
+                                                linha[j]["Valor"].ToString(),
+                                                R, G, B,
+                                                RLetra, GLetra, BLetra);
+                            }
+                            else
+                            {
+                                ColorirDataGrid(dataGridView1.Columns[i].DataPropertyName,
+                                                linha[j]["PalavraChave"].ToString(),
+                                                R, G, B,
+                                                RLetra, GLetra, BLetra);
+
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                messageCuston.MessageBoxError(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
 
         }
 
         private void ColorirDataGridCondicaoTempo(string coluna, string Condicao, string Valor, int R, int G, int B, int RLetra, int GLetra, int BLetra)
         {
+
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 if (dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
@@ -487,6 +460,9 @@ namespace THR.Views.Expedicao
 
                 }
             }
+
+
+
         }
 
         private void ColorirDataGridCondicaoPeso(string coluna, string Condicao, string Valor, int R, int G, int B, int RLetra, int GLetra, int BLetra)
@@ -688,7 +664,7 @@ namespace THR.Views.Expedicao
 
                     }
 
-                }                
+                }
 
             }
         }
