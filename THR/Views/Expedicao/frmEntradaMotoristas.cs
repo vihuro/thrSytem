@@ -202,12 +202,16 @@ namespace THR.Views.Expedicao
             dataGridView1.ClearSelection();
             VerificaPermissao();
 
+            txtPesoTotal.Text = "0";
+            cboRegiao.Text = "Disponível";
+
             this.Cursor = Cursors.Default;
         }
 
         private void frmControleCarregamentos_Load(object sender, EventArgs e)
         {
             ClearAll();
+
         }
 
         private void txtPesoTotal_KeyPress(object sender, KeyPressEventArgs e)
