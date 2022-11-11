@@ -42,15 +42,20 @@
             this.clnRegião = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNomeMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imagePeriodo = new System.Windows.Forms.DataGridViewImageColumn();
             this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnOndulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsuarioLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDataHoraLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imagem = new System.Windows.Forms.DataGridViewImageColumn();
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsuarioFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCaminhao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPesoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPorcentagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +69,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(237)))));
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(35)))), ((int)(((byte)(103)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
@@ -80,20 +85,25 @@
             this.clnRegião,
             this.clnNomeMotorista,
             this.clnPeriodo,
+            this.imagePeriodo,
             this.clnBolha,
             this.clnOndulado,
             this.clnUsuarioLancamento,
             this.clnDataHoraLancamento,
+            this.Imagem,
             this.clnStatus,
             this.clnUsuarioFim,
+            this.clnCaminhao,
+            this.clnCapacidade,
             this.clnDataHoraFinalizacao,
             this.clnTempoEspera,
-            this.clnPesoTotal});
+            this.clnPesoTotal,
+            this.clnPorcentagem});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(237)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(237)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
@@ -171,6 +181,7 @@
             this.clnNumeroRomaneio.HeaderText = "ROMANEIO";
             this.clnNumeroRomaneio.Name = "clnNumeroRomaneio";
             this.clnNumeroRomaneio.ReadOnly = true;
+            this.clnNumeroRomaneio.Visible = false;
             this.clnNumeroRomaneio.Width = 153;
             // 
             // clnRegião
@@ -195,7 +206,16 @@
             this.clnPeriodo.HeaderText = "PERÍODO";
             this.clnPeriodo.Name = "clnPeriodo";
             this.clnPeriodo.ReadOnly = true;
+            this.clnPeriodo.Visible = false;
             this.clnPeriodo.Width = 127;
+            // 
+            // imagePeriodo
+            // 
+            this.imagePeriodo.DataPropertyName = "imagePeriodo";
+            this.imagePeriodo.HeaderText = "PERÍODO";
+            this.imagePeriodo.Name = "imagePeriodo";
+            this.imagePeriodo.ReadOnly = true;
+            this.imagePeriodo.Width = 127;
             // 
             // clnBolha
             // 
@@ -203,7 +223,7 @@
             this.clnBolha.HeaderText = "BOL";
             this.clnBolha.Name = "clnBolha";
             this.clnBolha.ReadOnly = true;
-            this.clnBolha.Width = 80;
+            this.clnBolha.Width = 75;
             // 
             // clnOndulado
             // 
@@ -230,12 +250,22 @@
             this.clnDataHoraLancamento.ReadOnly = true;
             this.clnDataHoraLancamento.Width = 150;
             // 
+            // Imagem
+            // 
+            this.Imagem.DataPropertyName = "ImageStatus";
+            this.Imagem.HeaderText = "STATUS";
+            this.Imagem.Name = "Imagem";
+            this.Imagem.ReadOnly = true;
+            this.Imagem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Imagem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // clnStatus
             // 
             this.clnStatus.DataPropertyName = "Status";
             this.clnStatus.HeaderText = "STATUS";
             this.clnStatus.Name = "clnStatus";
             this.clnStatus.ReadOnly = true;
+            this.clnStatus.Visible = false;
             this.clnStatus.Width = 107;
             // 
             // clnUsuarioFim
@@ -246,6 +276,20 @@
             this.clnUsuarioFim.ReadOnly = true;
             this.clnUsuarioFim.Visible = false;
             this.clnUsuarioFim.Width = 178;
+            // 
+            // clnCaminhao
+            // 
+            this.clnCaminhao.DataPropertyName = "Caminhao";
+            this.clnCaminhao.HeaderText = "CAR.";
+            this.clnCaminhao.Name = "clnCaminhao";
+            this.clnCaminhao.ReadOnly = true;
+            // 
+            // clnCapacidade
+            // 
+            this.clnCapacidade.DataPropertyName = "Capacidade";
+            this.clnCapacidade.HeaderText = "CAPAC.";
+            this.clnCapacidade.Name = "clnCapacidade";
+            this.clnCapacidade.ReadOnly = true;
             // 
             // clnDataHoraFinalizacao
             // 
@@ -271,6 +315,13 @@
             this.clnPesoTotal.HeaderText = "PESO";
             this.clnPesoTotal.Name = "clnPesoTotal";
             this.clnPesoTotal.ReadOnly = true;
+            // 
+            // clnPorcentagem
+            // 
+            this.clnPorcentagem.DataPropertyName = "PorcentagemCarregada";
+            this.clnPorcentagem.HeaderText = "%";
+            this.clnPorcentagem.Name = "clnPorcentagem";
+            this.clnPorcentagem.ReadOnly = true;
             // 
             // frmPainelCarregamentos
             // 
@@ -301,14 +352,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRegião;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNomeMotorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPeriodo;
+        private System.Windows.Forms.DataGridViewImageColumn imagePeriodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnBolha;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnOndulado;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioLancamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraLancamento;
+        private System.Windows.Forms.DataGridViewImageColumn Imagem;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioFim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCaminhao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCapacidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraFinalizacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPesoTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPorcentagem;
     }
 }

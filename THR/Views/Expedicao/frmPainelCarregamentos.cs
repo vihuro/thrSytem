@@ -68,13 +68,25 @@ namespace THR.Views.Expedicao
                                                     R, G, B,
                                                     RLetra, GLetra, BLetra);
                         }
-                        else if(dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
+                        else if (dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
                         {
                             ColorirDataGridCondicaoTempo(dataGridView1.Columns[i].DataPropertyName,
                                                         linha[j]["Condicao"].ToString(),
                                                         linha[j]["Valor"].ToString(),
                                                         R, G, B,
                                                         RLetra, GLetra, BLetra);
+                        }
+                        else if (dataGridView1.Columns[i].DataPropertyName == "Status")
+                        {
+                            ColorirStatus();
+                        }
+                        else if (dataGridView1.Columns[i].DataPropertyName == "PorcentagemCarregada")
+                        {
+                            ColorirPorcentagem();
+                        }
+                        else if(dataGridView1.Columns[i].DataPropertyName == "Periodo")
+                        {
+                            ColorirPeriodo();
                         }
                         else
                         {
@@ -88,7 +100,84 @@ namespace THR.Views.Expedicao
             }
         }
 
+        private void ColorirPeriodo()
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "Periodo")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
 
+                        dataGridView1.Rows[0].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\moon.png".ToString());
+                        dataGridView1.Columns["imagePeriodo"].DisplayIndex = 4;
+
+
+                        dataGridView1.Rows[1].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\sun.png".ToString());
+                        dataGridView1.Columns["imagePeriodo"].DisplayIndex = 4;
+
+                        dataGridView1.Rows[2].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\sun.png".ToString());
+                        dataGridView1.Columns["imagePeriodo"].DisplayIndex = 4;
+
+                    }
+                }
+            }
+        }
+
+        private void ColorirPorcentagem()
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "Status")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+
+                        dataGridView1.Rows[0].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Aberto.png".ToString());
+                        dataGridView1.Rows[0].Cells["imagem"].Style.BackColor = Color.Green;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+
+                        dataGridView1.Rows[1].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Fechado.png".ToString());
+                        dataGridView1.Rows[1].Cells["imagem"].Style.BackColor = Color.Blue;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+                        dataGridView1.Rows[2].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Fechado.png".ToString());
+                        dataGridView1.Rows[2].Cells["imagem"].Style.BackColor = Color.Blue;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+                    }
+                }
+            }
+        }
+
+        private void ColorirStatus()
+        {
+
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "Status")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+
+                        dataGridView1.Rows[0].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Aberto.png".ToString());
+                        dataGridView1.Rows[0].Cells["imagem"].Style.BackColor = Color.Green;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+
+                        dataGridView1.Rows[1].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Fechado.png".ToString());
+                        dataGridView1.Rows[1].Cells["imagem"].Style.BackColor = Color.Blue;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+                        dataGridView1.Rows[2].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\human-skull.png".ToString());
+                        dataGridView1.Rows[2].Cells["imagem"].Style.BackColor = Color.Black;
+                        dataGridView1.Columns["imagem"].DisplayIndex = 9;
+
+                    }
+                }
+            }
+        }
 
         private void ColorirDataGrid(string coluna, string palavraChave, int R, int G, int B, int RLetra, int GLetra, int BLetra)
         {
@@ -120,7 +209,15 @@ namespace THR.Views.Expedicao
                             TimeSpan segundaCondicao = TimeSpan.FromMinutes(Convert.ToInt32(Valor));
 
                             DateTime dataHoraAgora = DateTime.Now;
-                            DateTime DataHoraGrid = Convert.ToDateTime(dataGridView1.Rows[y].Cells[8].Value.ToString());
+                            DateTime DataHoraGrid = new DateTime();
+                            for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                            {
+                                if (dataGridView1.Columns[j].DataPropertyName == "DataHoraLancamento")
+                                {
+                                    DataHoraGrid = Convert.ToDateTime(dataGridView1.Rows[y].Cells[j].Value.ToString());
+                                }
+                            }
+
 
 
                             TimeSpan Resultado = dataHoraAgora - DataHoraGrid;
@@ -241,6 +338,7 @@ namespace THR.Views.Expedicao
                 dataGridView1.ClearSelection();
 
                 CarregarTempoEspera();
+                CarregarPorcentagem();
             }
             catch (Exception ex)
             {
@@ -250,15 +348,48 @@ namespace THR.Views.Expedicao
 
         }
 
+        private void CarregarPorcentagem()
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "PorcentagemCarregada")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+
+                        dataGridView1.Rows[j].Cells[i].Value = service.Porcentagem(
+                            dataGridView1.Rows[j].Cells[18].Value.ToString(),
+                            dataGridView1.Rows[j].Cells[13].Value.ToString()
+                            );
+                    }
+                }
+            }
+        }
+
         private void CarregarTempoEspera()
         {
-            for(int i =0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                var TempoEspera = Tempo(Convert.ToDateTime(dataGridView1.Rows[i].Cells[8].Value.ToString()));
-                if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "EM ABERTO")
+                for (int j = 0; j < dataGridView1.RowCount; j++)
                 {
-                    dataGridView1.Rows[i].Cells[12].Value = TempoEspera;
+                    if (dataGridView1.Columns[j].DataPropertyName == "DataHoraLancamento")
+                    {
+                        var TempoEspera = Tempo(Convert.ToDateTime(dataGridView1.Rows[i].Cells[8].Value.ToString()));
+                        if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "EM ABERTO")
+                        {
+
+                            for (int c = 0; c < dataGridView1.RowCount; c++)
+                            {
+                                if (dataGridView1.Columns[c].DataPropertyName == "TempoEspera")
+                                {
+                                    dataGridView1.Rows[i].Cells[c].Value = TempoEspera;
+                                }
+                            }
+                            break;
+                        }
+                    }
                 }
+
             }
         }
 
@@ -278,7 +409,7 @@ namespace THR.Views.Expedicao
             seg++;
             Console.WriteLine(seg);
 
-            if(seg == 100)
+            if (seg == 100)
             {
                 LoadGridView();
                 VerificarCoresBancoDados();
@@ -289,7 +420,7 @@ namespace THR.Views.Expedicao
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            if(panel1.BackColor == Color.FromArgb(43, 217, 64))
+            if (panel1.BackColor == Color.FromArgb(43, 217, 64))
             {
                 timer1.Stop();
                 panel1.BackColor = Color.FromArgb(156, 8, 8);
@@ -299,7 +430,7 @@ namespace THR.Views.Expedicao
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if(panel1.BackColor == Color.FromArgb(156, 8, 8))
+            if (panel1.BackColor == Color.FromArgb(156, 8, 8))
             {
                 timer1.Start();
                 panel1.BackColor = Color.FromArgb(43, 217, 64);

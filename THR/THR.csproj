@@ -130,18 +130,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Expedicao\CarregamentosController.cs" />
+    <Compile Include="Controller\Expedicao\CarrosController.cs" />
     <Compile Include="Controller\Expedicao\MotoristaController.cs" />
     <Compile Include="Controller\Expedicao\RegiaoController.cs" />
     <Compile Include="Controller\Login\LoginController.cs" />
     <Compile Include="Controller\Login\ModuloController.cs" />
     <Compile Include="DAO\Connection\ConnectionDao.cs" />
     <Compile Include="DAO\Expedicao\CarregamentosDao.cs" />
+    <Compile Include="DAO\Expedicao\CarrosDao.cs" />
     <Compile Include="DAO\Expedicao\CoresPainelControleCarregamentosDao.cs" />
     <Compile Include="DAO\Expedicao\MotoristaDao.cs" />
     <Compile Include="DAO\Expedicao\RegiaoDao.cs" />
     <Compile Include="DAO\Login\LoginDao.cs" />
     <Compile Include="DAO\Login\ModuloDao.cs" />
     <Compile Include="Dto\Expedicao\CarregamentosDto.cs" />
+    <Compile Include="Dto\Expedicao\CarrosDto.cs" />
     <Compile Include="Dto\Expedicao\CoresPainelControleCarregamentosDto.cs" />
     <Compile Include="Dto\Expedicao\MotoristaDto.cs" />
     <Compile Include="Dto\Expedicao\RegiaoDto.cs" />
@@ -149,6 +152,7 @@
     <Compile Include="Dto\Login\ModuloDto.cs" />
     <Compile Include="Interface\Login\Ilogin.cs" />
     <Compile Include="Model\Expedicao\CarregamentosModel.cs" />
+    <Compile Include="Model\Expedicao\CarrosModel.cs" />
     <Compile Include="Model\Expedicao\CoresPainelControleCarregamentosModel.cs" />
     <Compile Include="Model\Expedicao\MotoristasModel.cs" />
     <Compile Include="Model\Expedicao\RegiaoModel.cs" />
@@ -161,6 +165,7 @@
     </Compile>
     <Compile Include="Service\CustonException\ServiceException.cs" />
     <Compile Include="Service\Expedicao\CarregamentosService.cs" />
+    <Compile Include="Service\Expedicao\CarrosService.cs" />
     <Compile Include="Service\Expedicao\CoresPainelControleCarregamentosService.cs" />
     <Compile Include="Service\Expedicao\MotoristaService.cs" />
     <Compile Include="Service\Expedicao\RegiaoService.cs" />
@@ -255,6 +260,10 @@
     <None Include="Resources\refresh.png" />
     <None Include="Resources\play.png" />
     <None Include="Resources\stop-button.png" />
+    <None Include="Resources\Aberto.png" />
+    <None Include="Resources\Fechado.png" />
+    <None Include="Resources\moon.png" />
+    <None Include="Resources\sun.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

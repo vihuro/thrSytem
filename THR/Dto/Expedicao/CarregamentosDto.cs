@@ -18,6 +18,9 @@ namespace THR.Dto.Expedicao
         private string usuarioLancamento;
         private string dataHoraLancamento;
         private string status;
+        private string caminhao;
+        private string capacidade;
+        private string porcentagemCarregada;
         private string usuarioFinalizacao;
         private string dataHoraFinalizacao;
         private string tempoEspera;
@@ -33,6 +36,9 @@ namespace THR.Dto.Expedicao
         public string UsuarioLancamento { get => usuarioLancamento; set => usuarioLancamento = value; }
         public string DataHoraLancamento { get => dataHoraLancamento; set => dataHoraLancamento = value; }
         public string Status { get => status; set => status = value; }
+        public string Caminhao { get => caminhao; set => caminhao = value; }
+        public string Capacidade { get => capacidade; set => capacidade = value; }
+        public string PorcentagemCarregada { get => porcentagemCarregada; set => porcentagemCarregada = value; }
         public string UsuarioFinalizacao { get => usuarioFinalizacao; set => usuarioFinalizacao = value; }
         public string DataHoraFinalizacao { get => dataHoraFinalizacao; set => dataHoraFinalizacao = value; }
         public string TempoEspera { get => tempoEspera; set => tempoEspera = value; }

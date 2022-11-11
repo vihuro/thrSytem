@@ -27,6 +27,7 @@ namespace THR.Views.Expedicao
         private ModuloService modulosService;
         private RegiaoController regiaoController;
         private MotoristaController motoristaController;
+        private CarrosController carrosController;
 
 
         public frmControleCarregamentos(LoginDto loginDto, DataTable acessos)
@@ -39,10 +40,33 @@ namespace THR.Views.Expedicao
             modulosService = new ModuloService();
             regiaoController = new RegiaoController();
             motoristaController = new MotoristaController();
+            carrosController = new CarrosController();
             CarregarDataGrid();
             CarregarRegiao();
             CarregarMotorista();
+            CarregarCarros();
 
+        }
+
+        private void CarregarCarros()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            try
+            {
+                foreach(var itens in carrosController.Carros())
+                {
+                    cboCaminhao.Items.Add(itens);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         private void CarregarMotorista()
@@ -75,6 +99,7 @@ namespace THR.Views.Expedicao
                 {
                     cboRegiao.Items.Add(itens);
                 }
+
             }
             catch (ServiceException ex)
             {
@@ -190,13 +215,12 @@ namespace THR.Views.Expedicao
             txtNumeroCarregamento.Text = string.Empty;
             cboNomeMotorista.Text = string.Empty;
             cboRegiao.Text = string.Empty;
+            cboCaminhao.Text = string.Empty;
             txtPesoTotal.Text = string.Empty;
             rdbManha.Checked = false;
             rdbNoite.Checked = false;
             rdbBolhaSim.Checked = false;
-            rdbBolhaNao.Checked = false;
             rdbOnduladoSim.Checked = false;
-            rdbOnduladoNao.Checked = false;
             rdbStatusAberto.Checked = false;
             rdbStatusFechado.Checked = false;
             dataGridView1.ClearSelection();
@@ -204,6 +228,9 @@ namespace THR.Views.Expedicao
 
             txtPesoTotal.Text = "0";
             cboRegiao.Text = "Disponível";
+
+            rdbBolhaNao.Checked = true;
+            rdbOnduladoNao.Checked = true;
 
             this.Cursor = Cursors.Default;
         }
@@ -258,6 +285,7 @@ namespace THR.Views.Expedicao
                 dto.Ondulado = VerificarOndulado(gpOndulado);
                 dto.Status = VerificaStatus(gpStatus);
                 dto.PesoTotal = txtPesoTotal.Text;
+                dto.Caminhao = cboCaminhao.Text;
                 controller.Insert(dto);
 
                 CarregarDataGrid();
@@ -293,6 +321,7 @@ namespace THR.Views.Expedicao
                 dto.Status = VerificaStatus(gpStatus);
                 dto.DataHoraLancamento = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
                 dto.PesoTotal = txtPesoTotal.Text;
+                dto.Caminhao = cboCaminhao.Text;
                 controller.Update(dto);
 
                 CarregarDataGridNumero(dto.NumeroCarregamento);
@@ -348,7 +377,8 @@ namespace THR.Views.Expedicao
                 txtRomaneio.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 cboNomeMotorista.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 cboRegiao.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                txtPesoTotal.Text = dataGridView1.SelectedRows[0].Cells[13].Value.ToString();
+                cboCaminhao.Text = dataGridView1.SelectedRows[0].Cells[10].Value.ToString();
+                txtPesoTotal.Text = dataGridView1.SelectedRows[0].Cells[16].Value.ToString();
 
                 VerificarCheckeds();
 
@@ -412,7 +442,7 @@ namespace THR.Views.Expedicao
                 rdbNoite.Checked = true;
             }
 
-            if (dataGridView1.SelectedRows[0].Cells[5].Value.ToString() == "Sim")
+            if (dataGridView1.SelectedRows[0].Cells[5].Value.ToString() == "NÃO")
             {
                 rdbBolhaSim.Checked = true;
             }
@@ -421,7 +451,7 @@ namespace THR.Views.Expedicao
                 rdbBolhaNao.Checked = true;
             }
 
-            if (dataGridView1.SelectedRows[0].Cells[6].Value.ToString() == "Sim")
+            if (dataGridView1.SelectedRows[0].Cells[6].Value.ToString() == "SIM")
             {
                 rdbOnduladoSim.Checked = true;
             }
