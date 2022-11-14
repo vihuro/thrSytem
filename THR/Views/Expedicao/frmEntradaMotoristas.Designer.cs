@@ -35,12 +35,28 @@
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNumeroRomanerio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNomeMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRegiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPeriodoCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnOndulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNomeUsuarioLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataHoraLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCaminhao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPorcentagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsuarioFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboCaminhao = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.gpStatus = new System.Windows.Forms.GroupBox();
             this.rdbStatusFechado = new System.Windows.Forms.RadioButton();
-            this.rdbStatusAberto = new System.Windows.Forms.RadioButton();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumeroCarregamento = new System.Windows.Forms.TextBox();
@@ -66,23 +82,7 @@
             this.btnRelatorio = new System.Windows.Forms.Button();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNumeroRomanerio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNomeMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRegiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPeriodoCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnOndulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNomeUsuarioLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDataHoraLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCaminhao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPorcentagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUsuarioFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ckbBloqueado = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -127,6 +127,7 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel2.Controls.Add(this.ckbBloqueado);
             this.splitContainer1.Panel2.Controls.Add(this.cboCaminhao);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.btnAlterar);
@@ -208,6 +209,140 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // clnNumeroCarregamento
+            // 
+            this.clnNumeroCarregamento.DataPropertyName = "NumeroCarregamento";
+            this.clnNumeroCarregamento.HeaderText = "Nº/Carregamento";
+            this.clnNumeroCarregamento.Name = "clnNumeroCarregamento";
+            this.clnNumeroCarregamento.ReadOnly = true;
+            this.clnNumeroCarregamento.Visible = false;
+            // 
+            // clnNumeroRomanerio
+            // 
+            this.clnNumeroRomanerio.DataPropertyName = "NumeroRomaneio";
+            this.clnNumeroRomanerio.HeaderText = "Nº/Romaneio";
+            this.clnNumeroRomanerio.Name = "clnNumeroRomanerio";
+            this.clnNumeroRomanerio.ReadOnly = true;
+            this.clnNumeroRomanerio.Width = 80;
+            // 
+            // clnNomeMotorista
+            // 
+            this.clnNomeMotorista.DataPropertyName = "NomeMotorista";
+            this.clnNomeMotorista.HeaderText = "Motorista";
+            this.clnNomeMotorista.Name = "clnNomeMotorista";
+            this.clnNomeMotorista.ReadOnly = true;
+            this.clnNomeMotorista.Width = 150;
+            // 
+            // clnRegiao
+            // 
+            this.clnRegiao.DataPropertyName = "Regiao";
+            this.clnRegiao.HeaderText = "Região";
+            this.clnRegiao.Name = "clnRegiao";
+            this.clnRegiao.ReadOnly = true;
+            this.clnRegiao.Width = 150;
+            // 
+            // clnPeriodoCarregamento
+            // 
+            this.clnPeriodoCarregamento.DataPropertyName = "Periodo";
+            this.clnPeriodoCarregamento.HeaderText = "Período";
+            this.clnPeriodoCarregamento.Name = "clnPeriodoCarregamento";
+            this.clnPeriodoCarregamento.ReadOnly = true;
+            this.clnPeriodoCarregamento.Width = 60;
+            // 
+            // clnBolha
+            // 
+            this.clnBolha.DataPropertyName = "Bolha";
+            this.clnBolha.HeaderText = "Bolha";
+            this.clnBolha.Name = "clnBolha";
+            this.clnBolha.ReadOnly = true;
+            this.clnBolha.Width = 60;
+            // 
+            // clnOndulado
+            // 
+            this.clnOndulado.DataPropertyName = "Ondulado";
+            this.clnOndulado.HeaderText = "Ondulado";
+            this.clnOndulado.Name = "clnOndulado";
+            this.clnOndulado.ReadOnly = true;
+            this.clnOndulado.Width = 60;
+            // 
+            // clnNomeUsuarioLancamento
+            // 
+            this.clnNomeUsuarioLancamento.DataPropertyName = "UsuarioLancamento";
+            this.clnNomeUsuarioLancamento.HeaderText = "Usuário/Lançamento";
+            this.clnNomeUsuarioLancamento.Name = "clnNomeUsuarioLancamento";
+            this.clnNomeUsuarioLancamento.ReadOnly = true;
+            this.clnNomeUsuarioLancamento.Width = 120;
+            // 
+            // clnDataHoraLancamento
+            // 
+            this.clnDataHoraLancamento.DataPropertyName = "DataHoraLancamento";
+            this.clnDataHoraLancamento.HeaderText = "Data/Hora Lanc.";
+            this.clnDataHoraLancamento.Name = "clnDataHoraLancamento";
+            this.clnDataHoraLancamento.ReadOnly = true;
+            this.clnDataHoraLancamento.Width = 120;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.DataPropertyName = "Status";
+            this.clnStatus.HeaderText = "Status";
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            this.clnStatus.Width = 80;
+            // 
+            // clnCaminhao
+            // 
+            this.clnCaminhao.DataPropertyName = "Caminhao";
+            this.clnCaminhao.HeaderText = "Carro";
+            this.clnCaminhao.Name = "clnCaminhao";
+            this.clnCaminhao.ReadOnly = true;
+            this.clnCaminhao.Width = 50;
+            // 
+            // clnCapacidade
+            // 
+            this.clnCapacidade.DataPropertyName = "Capacidade";
+            this.clnCapacidade.HeaderText = "Capac.";
+            this.clnCapacidade.Name = "clnCapacidade";
+            this.clnCapacidade.ReadOnly = true;
+            this.clnCapacidade.Width = 50;
+            // 
+            // clnPorcentagem
+            // 
+            this.clnPorcentagem.DataPropertyName = "PorcentagemCarregada";
+            this.clnPorcentagem.HeaderText = "%";
+            this.clnPorcentagem.Name = "clnPorcentagem";
+            this.clnPorcentagem.ReadOnly = true;
+            this.clnPorcentagem.Width = 50;
+            // 
+            // clnUsuarioFinalizacao
+            // 
+            this.clnUsuarioFinalizacao.DataPropertyName = "UsuarioFim";
+            this.clnUsuarioFinalizacao.HeaderText = "Usuário/Fin.";
+            this.clnUsuarioFinalizacao.Name = "clnUsuarioFinalizacao";
+            this.clnUsuarioFinalizacao.ReadOnly = true;
+            // 
+            // clnDataHoraFinalizacao
+            // 
+            this.clnDataHoraFinalizacao.DataPropertyName = "DataHoraFim";
+            this.clnDataHoraFinalizacao.HeaderText = "Data/Hora Fin.";
+            this.clnDataHoraFinalizacao.Name = "clnDataHoraFinalizacao";
+            this.clnDataHoraFinalizacao.ReadOnly = true;
+            this.clnDataHoraFinalizacao.Width = 120;
+            // 
+            // clnTempoEspera
+            // 
+            this.clnTempoEspera.DataPropertyName = "TempoEspera";
+            this.clnTempoEspera.HeaderText = "Tempo/Espera";
+            this.clnTempoEspera.Name = "clnTempoEspera";
+            this.clnTempoEspera.ReadOnly = true;
+            // 
+            // clnPeso
+            // 
+            this.clnPeso.DataPropertyName = "PesoTotal";
+            this.clnPeso.HeaderText = "Peso/Total";
+            this.clnPeso.Name = "clnPeso";
+            this.clnPeso.ReadOnly = true;
+            this.clnPeso.Width = 80;
+            // 
             // cboCaminhao
             // 
             this.cboCaminhao.BackColor = System.Drawing.Color.White;
@@ -243,11 +378,11 @@
             // 
             // gpStatus
             // 
+            this.gpStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gpStatus.Controls.Add(this.rdbStatusFechado);
-            this.gpStatus.Controls.Add(this.rdbStatusAberto);
-            this.gpStatus.Location = new System.Drawing.Point(919, 16);
+            this.gpStatus.Location = new System.Drawing.Point(981, 41);
             this.gpStatus.Name = "gpStatus";
-            this.gpStatus.Size = new System.Drawing.Size(178, 61);
+            this.gpStatus.Size = new System.Drawing.Size(123, 61);
             this.gpStatus.TabIndex = 12;
             this.gpStatus.TabStop = false;
             this.gpStatus.Text = "Status";
@@ -255,24 +390,13 @@
             // rdbStatusFechado
             // 
             this.rdbStatusFechado.AutoSize = true;
-            this.rdbStatusFechado.Location = new System.Drawing.Point(103, 29);
+            this.rdbStatusFechado.Location = new System.Drawing.Point(22, 26);
             this.rdbStatusFechado.Name = "rdbStatusFechado";
             this.rdbStatusFechado.Size = new System.Drawing.Size(67, 17);
             this.rdbStatusFechado.TabIndex = 12;
             this.rdbStatusFechado.TabStop = true;
             this.rdbStatusFechado.Text = "Fechado";
             this.rdbStatusFechado.UseVisualStyleBackColor = true;
-            // 
-            // rdbStatusAberto
-            // 
-            this.rdbStatusAberto.AutoSize = true;
-            this.rdbStatusAberto.Location = new System.Drawing.Point(6, 29);
-            this.rdbStatusAberto.Name = "rdbStatusAberto";
-            this.rdbStatusAberto.Size = new System.Drawing.Size(56, 17);
-            this.rdbStatusAberto.TabIndex = 11;
-            this.rdbStatusAberto.TabStop = true;
-            this.rdbStatusAberto.Text = "Aberto";
-            this.rdbStatusAberto.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
@@ -537,139 +661,15 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // clnNumeroCarregamento
+            // ckbBloqueado
             // 
-            this.clnNumeroCarregamento.DataPropertyName = "NumeroCarregamento";
-            this.clnNumeroCarregamento.HeaderText = "Nº/Carregamento";
-            this.clnNumeroCarregamento.Name = "clnNumeroCarregamento";
-            this.clnNumeroCarregamento.ReadOnly = true;
-            this.clnNumeroCarregamento.Visible = false;
-            // 
-            // clnNumeroRomanerio
-            // 
-            this.clnNumeroRomanerio.DataPropertyName = "NumeroRomaneio";
-            this.clnNumeroRomanerio.HeaderText = "Nº/Romaneio";
-            this.clnNumeroRomanerio.Name = "clnNumeroRomanerio";
-            this.clnNumeroRomanerio.ReadOnly = true;
-            this.clnNumeroRomanerio.Width = 80;
-            // 
-            // clnNomeMotorista
-            // 
-            this.clnNomeMotorista.DataPropertyName = "NomeMotorista";
-            this.clnNomeMotorista.HeaderText = "Motorista";
-            this.clnNomeMotorista.Name = "clnNomeMotorista";
-            this.clnNomeMotorista.ReadOnly = true;
-            this.clnNomeMotorista.Width = 150;
-            // 
-            // clnRegiao
-            // 
-            this.clnRegiao.DataPropertyName = "Regiao";
-            this.clnRegiao.HeaderText = "Região";
-            this.clnRegiao.Name = "clnRegiao";
-            this.clnRegiao.ReadOnly = true;
-            this.clnRegiao.Width = 150;
-            // 
-            // clnPeriodoCarregamento
-            // 
-            this.clnPeriodoCarregamento.DataPropertyName = "Periodo";
-            this.clnPeriodoCarregamento.HeaderText = "Período";
-            this.clnPeriodoCarregamento.Name = "clnPeriodoCarregamento";
-            this.clnPeriodoCarregamento.ReadOnly = true;
-            this.clnPeriodoCarregamento.Width = 60;
-            // 
-            // clnBolha
-            // 
-            this.clnBolha.DataPropertyName = "Bolha";
-            this.clnBolha.HeaderText = "Bolha";
-            this.clnBolha.Name = "clnBolha";
-            this.clnBolha.ReadOnly = true;
-            this.clnBolha.Width = 60;
-            // 
-            // clnOndulado
-            // 
-            this.clnOndulado.DataPropertyName = "Ondulado";
-            this.clnOndulado.HeaderText = "Ondulado";
-            this.clnOndulado.Name = "clnOndulado";
-            this.clnOndulado.ReadOnly = true;
-            this.clnOndulado.Width = 60;
-            // 
-            // clnNomeUsuarioLancamento
-            // 
-            this.clnNomeUsuarioLancamento.DataPropertyName = "UsuarioLancamento";
-            this.clnNomeUsuarioLancamento.HeaderText = "Usuário/Lançamento";
-            this.clnNomeUsuarioLancamento.Name = "clnNomeUsuarioLancamento";
-            this.clnNomeUsuarioLancamento.ReadOnly = true;
-            this.clnNomeUsuarioLancamento.Width = 120;
-            // 
-            // clnDataHoraLancamento
-            // 
-            this.clnDataHoraLancamento.DataPropertyName = "DataHoraLancamento";
-            this.clnDataHoraLancamento.HeaderText = "Data/Hora Lanc.";
-            this.clnDataHoraLancamento.Name = "clnDataHoraLancamento";
-            this.clnDataHoraLancamento.ReadOnly = true;
-            this.clnDataHoraLancamento.Width = 120;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.DataPropertyName = "Status";
-            this.clnStatus.HeaderText = "Status";
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            this.clnStatus.Width = 80;
-            // 
-            // clnCaminhao
-            // 
-            this.clnCaminhao.DataPropertyName = "Caminhao";
-            this.clnCaminhao.HeaderText = "Carro";
-            this.clnCaminhao.Name = "clnCaminhao";
-            this.clnCaminhao.ReadOnly = true;
-            this.clnCaminhao.Width = 50;
-            // 
-            // clnCapacidade
-            // 
-            this.clnCapacidade.DataPropertyName = "Capacidade";
-            this.clnCapacidade.HeaderText = "Capac.";
-            this.clnCapacidade.Name = "clnCapacidade";
-            this.clnCapacidade.ReadOnly = true;
-            this.clnCapacidade.Width = 50;
-            // 
-            // clnPorcentagem
-            // 
-            this.clnPorcentagem.DataPropertyName = "PorcentagemCarregada";
-            this.clnPorcentagem.HeaderText = "%";
-            this.clnPorcentagem.Name = "clnPorcentagem";
-            this.clnPorcentagem.ReadOnly = true;
-            this.clnPorcentagem.Width = 50;
-            // 
-            // clnUsuarioFinalizacao
-            // 
-            this.clnUsuarioFinalizacao.DataPropertyName = "UsuarioFim";
-            this.clnUsuarioFinalizacao.HeaderText = "Usuário/Fin.";
-            this.clnUsuarioFinalizacao.Name = "clnUsuarioFinalizacao";
-            this.clnUsuarioFinalizacao.ReadOnly = true;
-            // 
-            // clnDataHoraFinalizacao
-            // 
-            this.clnDataHoraFinalizacao.DataPropertyName = "DataHoraFim";
-            this.clnDataHoraFinalizacao.HeaderText = "Data/Hora Fin.";
-            this.clnDataHoraFinalizacao.Name = "clnDataHoraFinalizacao";
-            this.clnDataHoraFinalizacao.ReadOnly = true;
-            this.clnDataHoraFinalizacao.Width = 120;
-            // 
-            // clnTempoEspera
-            // 
-            this.clnTempoEspera.DataPropertyName = "TempoEspera";
-            this.clnTempoEspera.HeaderText = "Tempo/Espera";
-            this.clnTempoEspera.Name = "clnTempoEspera";
-            this.clnTempoEspera.ReadOnly = true;
-            // 
-            // clnPeso
-            // 
-            this.clnPeso.DataPropertyName = "PesoTotal";
-            this.clnPeso.HeaderText = "Peso/Total";
-            this.clnPeso.Name = "clnPeso";
-            this.clnPeso.ReadOnly = true;
-            this.clnPeso.Width = 80;
+            this.ckbBloqueado.AutoSize = true;
+            this.ckbBloqueado.Location = new System.Drawing.Point(448, 46);
+            this.ckbBloqueado.Name = "ckbBloqueado";
+            this.ckbBloqueado.Size = new System.Drawing.Size(77, 17);
+            this.ckbBloqueado.TabIndex = 24;
+            this.ckbBloqueado.Text = "Bloqueado";
+            this.ckbBloqueado.UseVisualStyleBackColor = true;
             // 
             // frmControleCarregamentos
             // 
@@ -742,7 +742,6 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox gpStatus;
         private System.Windows.Forms.RadioButton rdbStatusFechado;
-        private System.Windows.Forms.RadioButton rdbStatusAberto;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.ComboBox cboCaminhao;
         private System.Windows.Forms.Label label6;
@@ -763,5 +762,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraFinalizacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPeso;
+        private System.Windows.Forms.CheckBox ckbBloqueado;
     }
 }

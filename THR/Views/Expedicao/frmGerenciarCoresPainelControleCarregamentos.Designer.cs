@@ -33,7 +33,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciarCoresPainelControleCarregamentos));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRomaneio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRegiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnOndulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsuarioLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataHoraLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsuarioFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCaminhao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPorcentagemCarregada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPesoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rdbTerceiraCondicao = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTerceiroValor = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cboTerceiraCondicao = new System.Windows.Forms.ComboBox();
             this.rdbSegundaCondicao = new System.Windows.Forms.RadioButton();
             this.rdbPrimeiraCondicao = new System.Windows.Forms.RadioButton();
             this.cboPrimeiraCondicao = new System.Windows.Forms.ComboBox();
@@ -68,20 +90,6 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.clnNumeroCarregamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRomaneio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRegiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnBolha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnOndulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUsuarioLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDataHoraLancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUsuarioFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDataHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPesoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -119,8 +127,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.cboColuna);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.btnSalvar);
-            this.splitContainer1.Size = new System.Drawing.Size(867, 476);
-            this.splitContainer1.SplitterDistance = 166;
+            this.splitContainer1.Size = new System.Drawing.Size(920, 519);
+            this.splitContainer1.SplitterDistance = 180;
             this.splitContainer1.TabIndex = 0;
             // 
             // dataGridView1
@@ -153,6 +161,9 @@
             this.clnDataHoraLancamento,
             this.clnStatus,
             this.clnUsuarioFim,
+            this.clnCaminhao,
+            this.clnCapacidade,
+            this.clnPorcentagemCarregada,
             this.clnDataHoraFin,
             this.clnTempoEspera,
             this.clnPesoTotal});
@@ -174,363 +185,8 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(865, 164);
+            this.dataGridView1.Size = new System.Drawing.Size(918, 178);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rdbSegundaCondicao);
-            this.groupBox2.Controls.Add(this.rdbPrimeiraCondicao);
-            this.groupBox2.Controls.Add(this.cboPrimeiraCondicao);
-            this.groupBox2.Controls.Add(this.txtSegundoValor);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtPrimeiroValor);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.cboSegundaCondicao);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(527, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(326, 145);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Condições";
-            // 
-            // rdbSegundaCondicao
-            // 
-            this.rdbSegundaCondicao.AutoSize = true;
-            this.rdbSegundaCondicao.Enabled = false;
-            this.rdbSegundaCondicao.Location = new System.Drawing.Point(205, 19);
-            this.rdbSegundaCondicao.Name = "rdbSegundaCondicao";
-            this.rdbSegundaCondicao.Size = new System.Drawing.Size(115, 17);
-            this.rdbSegundaCondicao.TabIndex = 23;
-            this.rdbSegundaCondicao.TabStop = true;
-            this.rdbSegundaCondicao.Text = "Segunda condição";
-            this.rdbSegundaCondicao.UseVisualStyleBackColor = true;
-            this.rdbSegundaCondicao.CheckedChanged += new System.EventHandler(this.rdbSegundaCondicao_CheckedChanged);
-            // 
-            // rdbPrimeiraCondicao
-            // 
-            this.rdbPrimeiraCondicao.AutoSize = true;
-            this.rdbPrimeiraCondicao.Enabled = false;
-            this.rdbPrimeiraCondicao.Location = new System.Drawing.Point(19, 19);
-            this.rdbPrimeiraCondicao.Name = "rdbPrimeiraCondicao";
-            this.rdbPrimeiraCondicao.Size = new System.Drawing.Size(109, 17);
-            this.rdbPrimeiraCondicao.TabIndex = 22;
-            this.rdbPrimeiraCondicao.TabStop = true;
-            this.rdbPrimeiraCondicao.Text = "Primeira condição";
-            this.rdbPrimeiraCondicao.UseVisualStyleBackColor = true;
-            this.rdbPrimeiraCondicao.CheckedChanged += new System.EventHandler(this.rdbPrimeiraCondicao_CheckedChanged);
-            // 
-            // cboPrimeiraCondicao
-            // 
-            this.cboPrimeiraCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPrimeiraCondicao.Enabled = false;
-            this.cboPrimeiraCondicao.Location = new System.Drawing.Point(110, 57);
-            this.cboPrimeiraCondicao.Name = "cboPrimeiraCondicao";
-            this.cboPrimeiraCondicao.Size = new System.Drawing.Size(80, 21);
-            this.cboPrimeiraCondicao.TabIndex = 17;
-            // 
-            // txtSegundoValor
-            // 
-            this.txtSegundoValor.Enabled = false;
-            this.txtSegundoValor.Location = new System.Drawing.Point(267, 90);
-            this.txtSegundoValor.Name = "txtSegundoValor";
-            this.txtSegundoValor.Size = new System.Drawing.Size(53, 20);
-            this.txtSegundoValor.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Primeira Condição:";
-            // 
-            // txtPrimeiroValor
-            // 
-            this.txtPrimeiroValor.Enabled = false;
-            this.txtPrimeiroValor.Location = new System.Drawing.Point(267, 58);
-            this.txtPrimeiroValor.Name = "txtPrimeiroValor";
-            this.txtPrimeiroValor.Size = new System.Drawing.Size(53, 20);
-            this.txtPrimeiroValor.TabIndex = 12;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 97);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Segunda condição:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(227, 97);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(34, 13);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Valor:";
-            // 
-            // cboSegundaCondicao
-            // 
-            this.cboSegundaCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSegundaCondicao.Enabled = false;
-            this.cboSegundaCondicao.Location = new System.Drawing.Point(110, 89);
-            this.cboSegundaCondicao.Name = "cboSegundaCondicao";
-            this.cboSegundaCondicao.Size = new System.Drawing.Size(80, 21);
-            this.cboSegundaCondicao.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(227, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 13);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Valor:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtBlueLetra);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtGreenLetra);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtRedLetra);
-            this.groupBox1.Location = new System.Drawing.Point(527, 183);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 84);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cor da letra";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(156, 30);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "B";
-            // 
-            // txtBlueLetra
-            // 
-            this.txtBlueLetra.Location = new System.Drawing.Point(137, 46);
-            this.txtBlueLetra.Name = "txtBlueLetra";
-            this.txtBlueLetra.Size = new System.Drawing.Size(53, 20);
-            this.txtBlueLetra.TabIndex = 10;
-            this.txtBlueLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBluePalavraChave_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(97, 30);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "G";
-            // 
-            // txtGreenLetra
-            // 
-            this.txtGreenLetra.Location = new System.Drawing.Point(78, 46);
-            this.txtGreenLetra.Name = "txtGreenLetra";
-            this.txtGreenLetra.Size = new System.Drawing.Size(53, 20);
-            this.txtGreenLetra.TabIndex = 8;
-            this.txtGreenLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGreenPalavraChave_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(15, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "R";
-            // 
-            // txtRedLetra
-            // 
-            this.txtRedLetra.Location = new System.Drawing.Point(19, 46);
-            this.txtRedLetra.Name = "txtRedLetra";
-            this.txtRedLetra.Size = new System.Drawing.Size(53, 20);
-            this.txtRedLetra.TabIndex = 0;
-            this.txtRedLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRedPalavraChave_KeyPress);
-            // 
-            // gpColuna
-            // 
-            this.gpColuna.Controls.Add(this.label6);
-            this.gpColuna.Controls.Add(this.txtBlueColuna);
-            this.gpColuna.Controls.Add(this.label5);
-            this.gpColuna.Controls.Add(this.txtGreenColuna);
-            this.gpColuna.Controls.Add(this.label4);
-            this.gpColuna.Controls.Add(this.txtRedColuna);
-            this.gpColuna.Location = new System.Drawing.Point(92, 183);
-            this.gpColuna.Name = "gpColuna";
-            this.gpColuna.Size = new System.Drawing.Size(213, 84);
-            this.gpColuna.TabIndex = 6;
-            this.gpColuna.TabStop = false;
-            this.gpColuna.Text = "Cor de fundo";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(156, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(14, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "B";
-            // 
-            // txtBlueColuna
-            // 
-            this.txtBlueColuna.Location = new System.Drawing.Point(137, 46);
-            this.txtBlueColuna.Name = "txtBlueColuna";
-            this.txtBlueColuna.Size = new System.Drawing.Size(53, 20);
-            this.txtBlueColuna.TabIndex = 10;
-            this.txtBlueColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBlueColuna_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "G";
-            // 
-            // txtGreenColuna
-            // 
-            this.txtGreenColuna.Location = new System.Drawing.Point(78, 46);
-            this.txtGreenColuna.Name = "txtGreenColuna";
-            this.txtGreenColuna.Size = new System.Drawing.Size(53, 20);
-            this.txtGreenColuna.TabIndex = 8;
-            this.txtGreenColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGreenColuna_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "R";
-            // 
-            // txtRedColuna
-            // 
-            this.txtRedColuna.Location = new System.Drawing.Point(19, 46);
-            this.txtRedColuna.Name = "txtRedColuna";
-            this.txtRedColuna.Size = new System.Drawing.Size(53, 20);
-            this.txtRedColuna.TabIndex = 0;
-            this.txtRedColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRedColuna_KeyPress);
-            // 
-            // cboPalavraChave
-            // 
-            this.cboPalavraChave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPalavraChave.Location = new System.Drawing.Point(133, 52);
-            this.cboPalavraChave.Name = "cboPalavraChave";
-            this.cboPalavraChave.Size = new System.Drawing.Size(172, 21);
-            this.cboPalavraChave.TabIndex = 14;
-            this.cboPalavraChave.SelectedValueChanged += new System.EventHandler(this.cboPalavraChave_SelectedValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Palavra chave:";
-            // 
-            // cboColuna
-            // 
-            this.cboColuna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboColuna.FormattingEnabled = true;
-            this.cboColuna.Items.AddRange(new object[] {
-            "NomeMotorista",
-            "Regiao",
-            "Periodo",
-            "Bolha",
-            "Ondulado",
-            "UsuarioLancamento",
-            "DataHoraLancamento",
-            "Status",
-            "UsuarioFim",
-            "DataHoraFim",
-            "TempoEspera",
-            "PesoTotal"});
-            this.cboColuna.Location = new System.Drawing.Point(133, 22);
-            this.cboColuna.Name = "cboColuna";
-            this.cboColuna.Size = new System.Drawing.Size(172, 21);
-            this.cboColuna.TabIndex = 2;
-            this.cboColuna.SelectedValueChanged += new System.EventHandler(this.cboColuna_SelectedValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Coluna:";
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Location = new System.Drawing.Point(778, 269);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 13;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Coluna:";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(49)))), ((int)(((byte)(146)))));
-            this.panel1.Controls.Add(this.btnRefresh);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(37, 498);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Image = global::THR.Properties.Resources.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(37, 33);
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUsuario});
-            this.statusStrip1.Location = new System.Drawing.Point(37, 476);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(867, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(0, 17);
             // 
             // clnNumeroCarregamento
             // 
@@ -611,6 +267,27 @@
             this.clnUsuarioFim.ReadOnly = true;
             this.clnUsuarioFim.Visible = false;
             // 
+            // clnCaminhao
+            // 
+            this.clnCaminhao.DataPropertyName = "Caminhao";
+            this.clnCaminhao.HeaderText = "Caminhão";
+            this.clnCaminhao.Name = "clnCaminhao";
+            this.clnCaminhao.ReadOnly = true;
+            // 
+            // clnCapacidade
+            // 
+            this.clnCapacidade.DataPropertyName = "Capacidade";
+            this.clnCapacidade.HeaderText = "Capacidade";
+            this.clnCapacidade.Name = "clnCapacidade";
+            this.clnCapacidade.ReadOnly = true;
+            // 
+            // clnPorcentagemCarregada
+            // 
+            this.clnPorcentagemCarregada.DataPropertyName = "PorcentagemCarregada";
+            this.clnPorcentagemCarregada.HeaderText = "Porcentagem";
+            this.clnPorcentagemCarregada.Name = "clnPorcentagemCarregada";
+            this.clnPorcentagemCarregada.ReadOnly = true;
+            // 
             // clnDataHoraFin
             // 
             this.clnDataHoraFin.DataPropertyName = "DataHoraFim";
@@ -633,11 +310,420 @@
             this.clnPesoTotal.Name = "clnPesoTotal";
             this.clnPesoTotal.ReadOnly = true;
             // 
+            // rdbTerceiraCondicao
+            // 
+            this.rdbTerceiraCondicao.AutoSize = true;
+            this.rdbTerceiraCondicao.Enabled = false;
+            this.rdbTerceiraCondicao.Location = new System.Drawing.Point(262, 16);
+            this.rdbTerceiraCondicao.Name = "rdbTerceiraCondicao";
+            this.rdbTerceiraCondicao.Size = new System.Drawing.Size(111, 17);
+            this.rdbTerceiraCondicao.TabIndex = 28;
+            this.rdbTerceiraCondicao.TabStop = true;
+            this.rdbTerceiraCondicao.Text = "Terceira condição";
+            this.rdbTerceiraCondicao.UseVisualStyleBackColor = true;
+            this.rdbTerceiraCondicao.CheckedChanged += new System.EventHandler(this.rdbTerceiraCondicao_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdbTerceiraCondicao);
+            this.groupBox2.Controls.Add(this.txtTerceiroValor);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.cboTerceiraCondicao);
+            this.groupBox2.Controls.Add(this.rdbSegundaCondicao);
+            this.groupBox2.Controls.Add(this.rdbPrimeiraCondicao);
+            this.groupBox2.Controls.Add(this.cboPrimeiraCondicao);
+            this.groupBox2.Controls.Add(this.txtSegundoValor);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtPrimeiroValor);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.cboSegundaCondicao);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Location = new System.Drawing.Point(527, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(379, 170);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Condições";
+            // 
+            // txtTerceiroValor
+            // 
+            this.txtTerceiroValor.Enabled = false;
+            this.txtTerceiroValor.Location = new System.Drawing.Point(307, 124);
+            this.txtTerceiroValor.Name = "txtTerceiroValor";
+            this.txtTerceiroValor.Size = new System.Drawing.Size(53, 20);
+            this.txtTerceiroValor.TabIndex = 27;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 131);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Terceira condição:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(267, 131);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(34, 13);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Valor:";
+            // 
+            // cboTerceiraCondicao
+            // 
+            this.cboTerceiraCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTerceiraCondicao.Enabled = false;
+            this.cboTerceiraCondicao.Location = new System.Drawing.Point(110, 123);
+            this.cboTerceiraCondicao.Name = "cboTerceiraCondicao";
+            this.cboTerceiraCondicao.Size = new System.Drawing.Size(80, 21);
+            this.cboTerceiraCondicao.TabIndex = 25;
+            // 
+            // rdbSegundaCondicao
+            // 
+            this.rdbSegundaCondicao.AutoSize = true;
+            this.rdbSegundaCondicao.Enabled = false;
+            this.rdbSegundaCondicao.Location = new System.Drawing.Point(134, 19);
+            this.rdbSegundaCondicao.Name = "rdbSegundaCondicao";
+            this.rdbSegundaCondicao.Size = new System.Drawing.Size(115, 17);
+            this.rdbSegundaCondicao.TabIndex = 23;
+            this.rdbSegundaCondicao.TabStop = true;
+            this.rdbSegundaCondicao.Text = "Segunda condição";
+            this.rdbSegundaCondicao.UseVisualStyleBackColor = true;
+            this.rdbSegundaCondicao.CheckedChanged += new System.EventHandler(this.rdbSegundaCondicao_CheckedChanged);
+            // 
+            // rdbPrimeiraCondicao
+            // 
+            this.rdbPrimeiraCondicao.AutoSize = true;
+            this.rdbPrimeiraCondicao.Enabled = false;
+            this.rdbPrimeiraCondicao.Location = new System.Drawing.Point(19, 19);
+            this.rdbPrimeiraCondicao.Name = "rdbPrimeiraCondicao";
+            this.rdbPrimeiraCondicao.Size = new System.Drawing.Size(109, 17);
+            this.rdbPrimeiraCondicao.TabIndex = 22;
+            this.rdbPrimeiraCondicao.TabStop = true;
+            this.rdbPrimeiraCondicao.Text = "Primeira condição";
+            this.rdbPrimeiraCondicao.UseVisualStyleBackColor = true;
+            this.rdbPrimeiraCondicao.CheckedChanged += new System.EventHandler(this.rdbPrimeiraCondicao_CheckedChanged);
+            // 
+            // cboPrimeiraCondicao
+            // 
+            this.cboPrimeiraCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPrimeiraCondicao.Enabled = false;
+            this.cboPrimeiraCondicao.Location = new System.Drawing.Point(110, 57);
+            this.cboPrimeiraCondicao.Name = "cboPrimeiraCondicao";
+            this.cboPrimeiraCondicao.Size = new System.Drawing.Size(80, 21);
+            this.cboPrimeiraCondicao.TabIndex = 17;
+            // 
+            // txtSegundoValor
+            // 
+            this.txtSegundoValor.Enabled = false;
+            this.txtSegundoValor.Location = new System.Drawing.Point(307, 90);
+            this.txtSegundoValor.Name = "txtSegundoValor";
+            this.txtSegundoValor.Size = new System.Drawing.Size(53, 20);
+            this.txtSegundoValor.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Primeira Condição:";
+            // 
+            // txtPrimeiroValor
+            // 
+            this.txtPrimeiroValor.Enabled = false;
+            this.txtPrimeiroValor.Location = new System.Drawing.Point(307, 58);
+            this.txtPrimeiroValor.Name = "txtPrimeiroValor";
+            this.txtPrimeiroValor.Size = new System.Drawing.Size(53, 20);
+            this.txtPrimeiroValor.TabIndex = 12;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 97);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Segunda condição:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(267, 97);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Valor:";
+            // 
+            // cboSegundaCondicao
+            // 
+            this.cboSegundaCondicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSegundaCondicao.Enabled = false;
+            this.cboSegundaCondicao.Location = new System.Drawing.Point(110, 89);
+            this.cboSegundaCondicao.Name = "cboSegundaCondicao";
+            this.cboSegundaCondicao.Size = new System.Drawing.Size(80, 21);
+            this.cboSegundaCondicao.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(267, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Valor:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtBlueLetra);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtGreenLetra);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtRedLetra);
+            this.groupBox1.Location = new System.Drawing.Point(527, 221);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(213, 84);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cor da letra";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(156, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "B";
+            // 
+            // txtBlueLetra
+            // 
+            this.txtBlueLetra.Location = new System.Drawing.Point(137, 46);
+            this.txtBlueLetra.Name = "txtBlueLetra";
+            this.txtBlueLetra.Size = new System.Drawing.Size(53, 20);
+            this.txtBlueLetra.TabIndex = 10;
+            this.txtBlueLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBluePalavraChave_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(97, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "G";
+            // 
+            // txtGreenLetra
+            // 
+            this.txtGreenLetra.Location = new System.Drawing.Point(78, 46);
+            this.txtGreenLetra.Name = "txtGreenLetra";
+            this.txtGreenLetra.Size = new System.Drawing.Size(53, 20);
+            this.txtGreenLetra.TabIndex = 8;
+            this.txtGreenLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGreenPalavraChave_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(38, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 13);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "R";
+            // 
+            // txtRedLetra
+            // 
+            this.txtRedLetra.Location = new System.Drawing.Point(19, 46);
+            this.txtRedLetra.Name = "txtRedLetra";
+            this.txtRedLetra.Size = new System.Drawing.Size(53, 20);
+            this.txtRedLetra.TabIndex = 0;
+            this.txtRedLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRedPalavraChave_KeyPress);
+            // 
+            // gpColuna
+            // 
+            this.gpColuna.Controls.Add(this.label6);
+            this.gpColuna.Controls.Add(this.txtBlueColuna);
+            this.gpColuna.Controls.Add(this.label5);
+            this.gpColuna.Controls.Add(this.txtGreenColuna);
+            this.gpColuna.Controls.Add(this.label4);
+            this.gpColuna.Controls.Add(this.txtRedColuna);
+            this.gpColuna.Location = new System.Drawing.Point(92, 221);
+            this.gpColuna.Name = "gpColuna";
+            this.gpColuna.Size = new System.Drawing.Size(213, 84);
+            this.gpColuna.TabIndex = 6;
+            this.gpColuna.TabStop = false;
+            this.gpColuna.Text = "Cor de fundo";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(156, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(14, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "B";
+            // 
+            // txtBlueColuna
+            // 
+            this.txtBlueColuna.Location = new System.Drawing.Point(137, 46);
+            this.txtBlueColuna.Name = "txtBlueColuna";
+            this.txtBlueColuna.Size = new System.Drawing.Size(53, 20);
+            this.txtBlueColuna.TabIndex = 10;
+            this.txtBlueColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBlueColuna_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(97, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "G";
+            // 
+            // txtGreenColuna
+            // 
+            this.txtGreenColuna.Location = new System.Drawing.Point(78, 46);
+            this.txtGreenColuna.Name = "txtGreenColuna";
+            this.txtGreenColuna.Size = new System.Drawing.Size(53, 20);
+            this.txtGreenColuna.TabIndex = 8;
+            this.txtGreenColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGreenColuna_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(38, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "R";
+            // 
+            // txtRedColuna
+            // 
+            this.txtRedColuna.Location = new System.Drawing.Point(19, 46);
+            this.txtRedColuna.Name = "txtRedColuna";
+            this.txtRedColuna.Size = new System.Drawing.Size(53, 20);
+            this.txtRedColuna.TabIndex = 0;
+            this.txtRedColuna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRedColuna_KeyPress);
+            // 
+            // cboPalavraChave
+            // 
+            this.cboPalavraChave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPalavraChave.Location = new System.Drawing.Point(133, 52);
+            this.cboPalavraChave.Name = "cboPalavraChave";
+            this.cboPalavraChave.Size = new System.Drawing.Size(172, 21);
+            this.cboPalavraChave.TabIndex = 14;
+            this.cboPalavraChave.SelectedValueChanged += new System.EventHandler(this.cboPalavraChave_SelectedValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Palavra chave:";
+            // 
+            // cboColuna
+            // 
+            this.cboColuna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboColuna.FormattingEnabled = true;
+            this.cboColuna.Items.AddRange(new object[] {
+            "Bolha",
+            "DataHoraFim",
+            "DataHoraLancamento",
+            "NomeMotorista",
+            "Ondulado",
+            "Periodo",
+            "PesoTotal",
+            "PorcentagemCarregada",
+            "Regiao",
+            "Status",
+            "TempoEspera",
+            "UsuarioFim",
+            "UsuarioLancamento"});
+            this.cboColuna.Location = new System.Drawing.Point(133, 22);
+            this.cboColuna.Name = "cboColuna";
+            this.cboColuna.Size = new System.Drawing.Size(172, 21);
+            this.cboColuna.TabIndex = 2;
+            this.cboColuna.SelectedValueChanged += new System.EventHandler(this.cboColuna_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(84, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Coluna:";
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Location = new System.Drawing.Point(831, 298);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 13;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(45, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Coluna:";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(49)))), ((int)(((byte)(146)))));
+            this.panel1.Controls.Add(this.btnRefresh);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(37, 541);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = global::THR.Properties.Resources.refresh;
+            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(37, 33);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUsuario});
+            this.statusStrip1.Location = new System.Drawing.Point(37, 519);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(920, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 17);
+            // 
             // frmGerenciarCoresPainelControleCarregamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 498);
+            this.ClientSize = new System.Drawing.Size(957, 541);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
@@ -703,7 +789,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cboSegundaCondicao;
-        private System.Windows.Forms.RadioButton rdbSegundaCondicao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnNumeroCarregamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRomaneio;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnMotorista;
@@ -715,8 +800,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraLancamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioFim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCaminhao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCapacidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPorcentagemCarregada;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPesoTotal;
+        private System.Windows.Forms.TextBox txtTerceiroValor;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cboTerceiraCondicao;
+        private System.Windows.Forms.RadioButton rdbTerceiraCondicao;
+        private System.Windows.Forms.RadioButton rdbSegundaCondicao;
     }
 }

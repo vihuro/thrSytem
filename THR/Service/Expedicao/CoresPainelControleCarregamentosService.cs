@@ -23,7 +23,7 @@ namespace THR.Service.Expedicao
             this.loginDto = loginDto;
         }
 
-        public void BuscarCores(CoresPainelControleCarregamentosDto dto)
+        public void BuscarCores(CoresPainelControleCarregamentosDto dto, string idVariavel)
         {
             model = new CoresPainelControleCarregamentosModel();
             model.Coluna = dto.Coluna;
@@ -36,15 +36,35 @@ namespace THR.Service.Expedicao
             model.BLetra = dto.BLetra;
             model.Condicao = dto.Condicao;
             model.Valor = dto.Valor;
+            model.Id = dto.Id;
             model.UsuarioCadastro = loginDto.NomeUsuario;
             model.DataHoraCadastro = Convert.ToString(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-            if (dao.Exits(model))
+
+            if (idVariavel != "")
             {
-                dao.Update(model);
+                dao.UpdateCondicao(model);
             }
             else
             {
-                dao.Insert(model);
+                if(dto.Coluna != "Capacidade" && 
+                   dto.Coluna != "PorcentagemCarregada" && 
+                   dto.Coluna != "PesoTotal" && 
+                   dto.Coluna != "DataHoraLancamento")
+                {
+                    if (dao.Exits(model))
+                    {
+                        dao.Update(model);
+                    }
+                    else
+                    {
+                        dao.Insert(model);
+                    }
+                }
+                else
+                {
+                    dao.Insert(model);
+                }
+
             }
         }
 

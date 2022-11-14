@@ -63,6 +63,50 @@ namespace THR.DAO.Expedicao
             }
         }
 
+        internal void UpdateCondicao(CoresPainelControleCarregamentosModel model)
+        {
+            cmd = new OleDbCommand();
+            cmd.CommandText = "UPDATE tab_CoresPainelControleCarregamentos SET PalavraChave = @PalavraChave," +
+                                                                                "RCelula = @RCelula," +
+                                                                                "GCelula = @GCelula," +
+                                                                                "BCelula = @BCelula," +
+                                                                                "RLetra = @RLetra," +
+                                                                                "GLetra = @GLetra," +
+                                                                                "BLetra = @Bletra," +
+                                                                                "Condicao = @Condicao," +
+                                                                                "Valor = @Valor," +
+                                                                                "UsuarioCadastro = @UsuarioCadastro," +
+                                                                                "DataHoraCadastro = @DataHoraCadastro " +
+                                                                                "WHERE " +
+                                                                                "id = @id";
+            cmd.Parameters.AddWithValue("", model.PalavraChave);
+            cmd.Parameters.AddWithValue("", model.RCelula);
+            cmd.Parameters.AddWithValue("", model.GCelula);
+            cmd.Parameters.AddWithValue("", model.BCelula);
+            cmd.Parameters.AddWithValue("", model.RLetra);
+            cmd.Parameters.AddWithValue("", model.GLetra);
+            cmd.Parameters.AddWithValue("", model.BLetra);
+            cmd.Parameters.AddWithValue("", model.Condicao);
+            cmd.Parameters.AddWithValue("", model.Valor);
+            cmd.Parameters.AddWithValue("", model.UsuarioCadastro);
+            cmd.Parameters.AddWithValue("", model.DataHoraCadastro);
+            cmd.Parameters.AddWithValue("", model.Id);
+            try
+            {
+                cmd.Connection = con.Conectar();
+                cmd.ExecuteNonQuery();
+            }
+            catch (ServiceException ex)
+            {
+
+                throw new ServiceException(ex.Message);
+            }
+            finally
+            {
+                con.Desconectar();
+            }
+        }
+
         public void Update(CoresPainelControleCarregamentosModel model)
         {
             cmd = new OleDbCommand();
@@ -77,7 +121,8 @@ namespace THR.DAO.Expedicao
                                                                                 "UsuarioCadastro = @UsuarioCadastro," +
                                                                                 "DataHoraCadastro = @DataHoraCadastro " +
                                                                                 "WHERE " +
-                                                                                "Coluna = @Coluna AND PalavraChave = @PalavraChave";
+                                                                                "PalavraChave = @PalavraChave AND " +
+                                                                                "Coluna = @Coluna";
             cmd.Parameters.AddWithValue("", model.RCelula);
             cmd.Parameters.AddWithValue("", model.GCelula);
             cmd.Parameters.AddWithValue("", model.BCelula);
@@ -88,8 +133,8 @@ namespace THR.DAO.Expedicao
             cmd.Parameters.AddWithValue("", model.Valor);
             cmd.Parameters.AddWithValue("", model.UsuarioCadastro);
             cmd.Parameters.AddWithValue("", model.DataHoraCadastro);
-            cmd.Parameters.AddWithValue("", model.Coluna);
             cmd.Parameters.AddWithValue("", model.PalavraChave);
+            cmd.Parameters.AddWithValue("", model.Coluna);
             try
             {
                 cmd.Connection = con.Conectar();
@@ -98,7 +143,7 @@ namespace THR.DAO.Expedicao
             catch (ServiceException ex)
             {
 
-                throw new ServiceException(ex.Message);
+                throw new ServiceException(ex.ToString());
             }
             finally
             {

@@ -74,6 +74,7 @@ namespace THR.Views.Menu
 
                         if(permissoes.Contains("Expedição"))
                         {
+                            btnPainelColetas.Enabled = true;
                             AtivarbotoesExpedicao();
 
                         }
@@ -99,7 +100,8 @@ namespace THR.Views.Menu
                 switch (modulosService.DefinirAcessos(acessos, permissoes))
                 {
                     case true:
-                        if(permissoes == "Expedição - Admin" || permissoes == "Expedição - Painel")
+                        if(permissoes == "Expedição - Admin" || permissoes == "Expedição - Alterações" ||
+                            permissoes == "Expedição - Comunicador")
                         {
                             btnControleMotoristas.Enabled = true;
                             if(permissoes == "Expedição - Admin")
@@ -234,7 +236,7 @@ namespace THR.Views.Menu
         {
             this.Cursor = Cursors.WaitCursor;
 
-            frmPainelCarregamentos painel = new frmPainelCarregamentos(loginDto);
+            frmPainelCarregamentos painel = new frmPainelCarregamentos(loginDto, acessos);
             painel.Show();
 
             this.Cursor = Cursors.Default;
@@ -244,7 +246,7 @@ namespace THR.Views.Menu
         {
             this.Cursor = Cursors.WaitCursor;
 
-            frmGerenciarCoresPainelControleCarregamentos cores = new frmGerenciarCoresPainelControleCarregamentos(loginDto);
+            frmGerenciarCoresPainelControleCarregamentos cores = new frmGerenciarCoresPainelControleCarregamentos(loginDto, acessos);
             cores.lblUsuario.Text = this.lblUsuario.Text;
             cores.Show();
 

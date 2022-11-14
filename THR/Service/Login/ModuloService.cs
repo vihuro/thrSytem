@@ -62,6 +62,7 @@ namespace THR.Service.Login
             "Expedição - Admin",
             "Expedição - Alterações",
             "Expedição - Painel",
+            "Expedição - Comunicador",
             "Estoque - Admin",
             "Manutenção - Admin"
             };

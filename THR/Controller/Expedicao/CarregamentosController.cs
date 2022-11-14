@@ -14,10 +14,10 @@ namespace THR.Controller.Expedicao
     {
         public LoginDto logingDto;
         public CarregamentosService service;
-        public CarregamentosController(LoginDto logingDto)
+        public CarregamentosController(LoginDto logingDto, DataTable dt)
         {
             this.logingDto = logingDto;
-            this.service = new CarregamentosService(logingDto);
+            this.service = new CarregamentosService(logingDto,dt);
 
         }
         public void Insert(CarregamentosDto dto)

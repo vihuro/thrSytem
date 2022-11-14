@@ -5,6 +5,7 @@ using THR.Service.CustonException;
 using THR.DAO.Expedicao;
 using THR.Dto.Login;
 using System.Data;
+using THR.Service.Login;
 
 namespace THR.Service.Expedicao
 {
@@ -14,11 +15,15 @@ namespace THR.Service.Expedicao
         private CarregamentosModel model;
         private LoginDto loginDto;
         private CarrosService carrosService;
-        public CarregamentosService(LoginDto loginDto)
+        private DataTable dt;
+        private ModuloService modulosService;
+        public CarregamentosService(LoginDto loginDto, DataTable dt)
         {
             dao = new CarregamentosDao();
             carrosService = new CarrosService();
             this.loginDto = loginDto;
+            this.dt = dt;
+            this.modulosService = new ModuloService();
         }
         public void Insert(CarregamentosDto dto)
         {
@@ -58,31 +63,51 @@ namespace THR.Service.Expedicao
             model = new CarregamentosModel();
             if (dto.NumeroCarregamento != null && dto.NumeroRomaneio != null && dto.NomeMotorista != null && 
                 dto.Regiao != null && dto.Periodo != null && dto.Bolha != null && dto.Ondulado != null && 
-                dto.Status != null && dto.PesoTotal != null && dto.Caminhao != null && dto.PesoTotal != string.Empty)
+                dto.PesoTotal != null && dto.Caminhao != null && dto.PesoTotal != string.Empty)
             {
                 model.NumeroCarregamento = dto.NumeroCarregamento;
 
-                if (dao.VerificarStatus(model))
+                double peso = Convert.ToDouble(dto.PesoTotal);
+
+                model.NumeroRomaneio = dto.NumeroRomaneio;
+                model.NomeMotorista = dto.NomeMotorista;
+                model.Regiao = dto.Regiao;
+                model.Periodo = dto.Periodo;
+                model.Bolha = dto.Bolha;
+                model.Ondulado = dto.Ondulado;
+                model.TempoEspera = TempoEspera(Convert.ToDateTime(dto.DataHoraLancamento), DateTime.Now);
+                model.UsuarioFinalizacao = loginDto.NomeUsuario;
+                model.DataHoraFinalizacao = Convert.ToString(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+                model.Status = dto.Status;
+                model.PesoTotal = Convert.ToString(peso.ToString("###,###.##"));
+
+                var status = dao.VerificarStatus(model);
+
+                var lista = modulosService.ListaAcessos();
+
+                if (status != "FECHADO" || status != "BLOQUEADO")
                 {
+                    for(int i = 0; i < lista.Length; i++)
+                    {
+                        if (modulosService.DefinirAcessos(dt, lista[i]))
+                        {
+                            if (lista[i] == "Expedição - Admin" || lista[i] == "Expedição - Comunicador")
+                            {
+                                dao.Update(model);
+                                break;
+                            }
+                            else if (i == lista.Length - 1)
+                            {
+                                throw new ServiceException("Esse usuário não tem acesso para fazer essa alteração!");
+                                break;
+                            }
+                        }
+                    }
 
-                    double peso = Convert.ToDouble(dto.PesoTotal);
-
-                    model.NumeroRomaneio = dto.NumeroRomaneio;
-                    model.NomeMotorista = dto.NomeMotorista;
-                    model.Regiao = dto.Regiao;
-                    model.Periodo = dto.Periodo;
-                    model.Bolha = dto.Bolha;
-                    model.Ondulado = dto.Ondulado;
-                    model.TempoEspera = TempoEspera(Convert.ToDateTime(dto.DataHoraLancamento), DateTime.Now);
-                    model.UsuarioFinalizacao = loginDto.NomeUsuario;
-                    model.DataHoraFinalizacao = Convert.ToString(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
-                    model.Status = dto.Status;
-                    model.PesoTotal = Convert.ToString(peso.ToString("###,###.##"));
-                    dao.Update(model);
                 }
                 else
                 {
-                    throw new ServiceException("Não é possivel modificar um carregamento já finalizado!");
+                    dao.Update(model);
                 }
 
             }

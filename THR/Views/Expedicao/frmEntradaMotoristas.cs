@@ -35,7 +35,7 @@ namespace THR.Views.Expedicao
             InitializeComponent();
             this.loginDto = loginDto;
             this.acessos = acessos;
-            controller = new CarregamentosController(loginDto);
+            controller = new CarregamentosController(loginDto, acessos);
             messageCuston = new MessageCuston();
             modulosService = new ModuloService();
             regiaoController = new RegiaoController();
@@ -149,13 +149,13 @@ namespace THR.Views.Expedicao
                 {
                     if (((RadioButton)control.Controls[i]).Checked)
                     {
-                        if(control.Controls[i].Text == "Aberto")
+                        if(control.Controls[i].Text == "Fechado")
                         {
-                            return "EM ABERTO";
+                            return "FECHADO";
                         }
                         else
                         {
-                            return "FECHADO";
+                            return "EM ABERTO";
                         }
                     }
                 }
@@ -221,7 +221,7 @@ namespace THR.Views.Expedicao
             rdbNoite.Checked = false;
             rdbBolhaSim.Checked = false;
             rdbOnduladoSim.Checked = false;
-            rdbStatusAberto.Checked = false;
+            ckbBloqueado.Checked = false;
             rdbStatusFechado.Checked = false;
             dataGridView1.ClearSelection();
             VerificaPermissao();
@@ -322,6 +322,19 @@ namespace THR.Views.Expedicao
                 dto.DataHoraLancamento = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
                 dto.PesoTotal = txtPesoTotal.Text;
                 dto.Caminhao = cboCaminhao.Text;
+                if (ckbBloqueado.Checked)
+                {
+                    dto.Status = "BLOQUEADO";
+                }
+                else if (rdbStatusFechado.Checked)
+                {
+                    dto.Status = "FECHADO";
+                }
+                else
+                {
+                    dto.Status = "EM ABERTO";
+                }
+
                 controller.Update(dto);
 
                 CarregarDataGridNumero(dto.NumeroCarregamento);
@@ -400,40 +413,46 @@ namespace THR.Views.Expedicao
 
         private void VerificaPermissao()
         {
-            var permissões = modulosService.DefinirAcessos(acessos, "");
-            foreach (var permissoes in modulosService.ListaAcessos())
-            {
-                switch (modulosService.DefinirAcessos(acessos, permissoes))
-                {
-                    case true:
 
-                        if (permissoes == "Expedição - Admin")
+            var lista = modulosService.ListaAcessos();
+            for(int i = 0; i < lista.Length; i++)
+            {
+                if (modulosService.DefinirAcessos(acessos, lista[i]))
+                {
+                    if (lista[i] == "Expedição - Admin" || lista[i] == "Expedição - Comunicador")
+                    {
+                        if (lista[i] == "Expedição - Comunicador")
                         {
-                            AtivarbotoesExpedicao();
+                            txtNumeroCarregamento.ReadOnly = true;
+                            txtPesoTotal.ReadOnly = true;
+                            txtRomaneio.ReadOnly = true;
+                            cboCaminhao.Enabled = false;
+                            cboNomeMotorista.Enabled = false;
+                            cboRegiao.Enabled = false;
+                            rdbBolhaNao.Enabled = false;
+                            rdbBolhaSim.Enabled = false;
+                            rdbManha.Enabled = false;
+                            rdbNoite.Enabled = false;
+                            rdbOnduladoNao.Enabled = false;
+                            rdbOnduladoSim.Enabled = false;
+                            rdbStatusFechado.Enabled = false;
                         }
-                        break;
+                    }
                 }
             }
         }
 
         private void AtivarbotoesExpedicao()
         {
-            if(dataGridView1.SelectedRows.Count > 0)
-            {
-                btnAlterar.Enabled = true;
-                btnSalvar.Enabled = false;
-            }
-            else
-            {
-                btnAlterar.Enabled = false;
-                btnSalvar.Enabled = true;
-            }
+
 
         }
 
         private void VerificarCheckeds()
         {
-            if (dataGridView1.SelectedRows[0].Cells[4].Value.ToString() == "Manhã")
+            ckbBloqueado.Checked = false;
+            rdbStatusFechado.Checked = false;
+            if (dataGridView1.SelectedRows[0].Cells[4].Value.ToString() == "MANHÃ")
             {
                 rdbManha.Checked = true;
             }
@@ -460,14 +479,15 @@ namespace THR.Views.Expedicao
                 rdbOnduladoNao.Checked = true;
             }
 
-            if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "EM ABERTO")
+            if(dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO")
             {
-                rdbStatusAberto.Checked = true;
+                ckbBloqueado.Checked = true;
             }
-            else
+            if(dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
             {
                 rdbStatusFechado.Checked = true;
             }
+
         }
 
         private void txtRomaneio_KeyDown(object sender, KeyEventArgs e)

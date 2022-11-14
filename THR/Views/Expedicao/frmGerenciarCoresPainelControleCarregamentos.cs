@@ -25,10 +25,12 @@ namespace THR.Views.Expedicao
         private CoresPainelControleCarregamentosService coresService;
         private CoresPainelControleCarregamentosDto coresDto;
 
-        public frmGerenciarCoresPainelControleCarregamentos(LoginDto loginDto)
+        private string idVariavel = "";
+
+        public frmGerenciarCoresPainelControleCarregamentos(LoginDto loginDto, DataTable dt)
         {
             InitializeComponent();
-            service = new CarregamentosService(loginDto);
+            service = new CarregamentosService(loginDto,dt);
             messageCuston = new MessageCuston();
             coresService = new CoresPainelControleCarregamentosService(loginDto);
 
@@ -63,14 +65,22 @@ namespace THR.Views.Expedicao
 
         private void CarregarTempoEspera()
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for(int i = 0; i < dataGridView1.ColumnCount; i++)
             {
-                var TempoEspera = Tempo(Convert.ToDateTime(dataGridView1.Rows[i].Cells[8].Value.ToString()));
-                if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "EM ABERTO")
+                if (dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
                 {
-                    dataGridView1.Rows[i].Cells[12].Value = TempoEspera;
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        var TempoEspera = Tempo(Convert.ToDateTime(dataGridView1.Rows[j].Cells[8].Value.ToString()));
+                        if (dataGridView1.Rows[j].Cells[9].Value.ToString() == "EM ABERTO")
+                        {
+                            dataGridView1.Rows[j].Cells[i].Value = TempoEspera;
+                        }
+                    }
+                    break;
                 }
             }
+
         }
 
         private string Tempo(DateTime dateTime)
@@ -132,13 +142,16 @@ namespace THR.Views.Expedicao
             coresDto.BLetra = txtBlueLetra.Text;
             coresDto.Condicao = cboPrimeiraCondicao.Text;
             coresDto.Valor = txtPrimeiroValor.Text;
+            coresDto.Id = idVariavel;
 
-            if (cboColuna.Text == "PesoTotal" || cboColuna.Text == "TempoEspera")
+            if (cboColuna.Text == "PesoTotal" || cboColuna.Text == "TempoEspera" || cboColuna.Text == "PorcentagemCarregada" ||
+                cboColuna.Text == "DataHoraLancamento")
             {
                 if (rdbPrimeiraCondicao.Checked)
                 {
                     coresDto.PalavraChave = cboPrimeiraCondicao.Text;
                     coresDto.Condicao = cboPrimeiraCondicao.Text;
+                    coresDto.Valor = txtPrimeiroValor.Text;
 
                 }
                 else if (rdbSegundaCondicao.Checked)
@@ -147,10 +160,31 @@ namespace THR.Views.Expedicao
                     coresDto.Condicao = cboSegundaCondicao.Text;
                     coresDto.Valor = txtSegundoValor.Text;
                 }
+                else if (rdbTerceiraCondicao.Checked)
+                {
+                    coresDto.PalavraChave = cboTerceiraCondicao.Text;
+                    coresDto.Condicao = cboTerceiraCondicao.Text;
+                    coresDto.Valor = txtTerceiroValor.Text;
+                }
+                else if(cboColuna.Text == "PorcentagemCarregada")
+                {
+                    if (rdbPrimeiraCondicao.Checked)
+                    {
+                        coresDto.Valor = cboPrimeiraCondicao.Text;
+                        coresDto.Valor = cboPrimeiraCondicao.Text;
+                    }
+                    else
+                    {
+                        coresDto.Valor = cboSegundaCondicao.Text;
+                        coresDto.Valor = cboSegundaCondicao.Text;
+                    }
+
+                }
+
             }
             try
             {
-                coresService.BuscarCores(coresDto);
+                coresService.BuscarCores(coresDto,idVariavel);
 
                 messageCuston.MessageBoxInfomation("Alterado com sucesso!");
             }
@@ -195,7 +229,37 @@ namespace THR.Views.Expedicao
         private void cboColuna_SelectedValueChanged(object sender, EventArgs e)
         {
 
-            if (cboColuna.Text == "PesoTotal" || cboColuna.Text == "TempoEspera")
+            if (cboColuna.Text == "PesoTotal" || cboColuna.Text == "TempoEspera" || cboColuna.Text == "PorcentagemCarregada")
+            {
+                cboPalavraChave.Text = string.Empty;
+                cboPalavraChave.Enabled = false;
+                rdbPrimeiraCondicao.Enabled = true;
+                rdbSegundaCondicao.Enabled = true;
+                rdbTerceiraCondicao.Enabled = true;
+
+                cboPrimeiraCondicao.Items.Clear();
+                cboSegundaCondicao.Items.Clear();
+                cboTerceiraCondicao.Items.Clear();
+
+
+
+                cboPrimeiraCondicao.Items.Add("MAIOR");
+                cboPrimeiraCondicao.Items.Add("MENOR");
+
+                cboSegundaCondicao.Items.Add("MAIOR");
+                cboSegundaCondicao.Items.Add("MENOR");
+
+                cboTerceiraCondicao.Items.Add("MAIOR");
+                cboTerceiraCondicao.Items.Add("MENOR");
+
+                txtPrimeiroValor.Text = "0";
+                txtSegundoValor.Text = "0";
+                txtTerceiroValor.Text = "0";
+
+                CarregarCondicao();
+
+            }
+            else if(cboColuna.Text == "DataHoraLancamento")
             {
                 cboPalavraChave.Text = string.Empty;
                 cboPalavraChave.Enabled = false;
@@ -207,32 +271,36 @@ namespace THR.Views.Expedicao
 
 
 
-                cboPrimeiraCondicao.Items.Add("MAIOR");
-                cboPrimeiraCondicao.Items.Add("MENOR");
+                cboPrimeiraCondicao.Items.Add("ONTEM");
+                cboPrimeiraCondicao.Items.Add("HOJE");
 
-                cboSegundaCondicao.Items.Add("MAIOR");
-                cboSegundaCondicao.Items.Add("MENOR");
-
-                txtPrimeiroValor.Text = "0";
-                txtSegundoValor.Text = "0";
+                cboSegundaCondicao.Items.Add("ONTEM");
+                cboSegundaCondicao.Items.Add("HOJE");
 
                 CarregarCondicao();
-
             }
             else
             {
                 VerificarCores();
                 cboPalavraChave.Enabled = true;
                 rdbPrimeiraCondicao.Enabled = false;
+                rdbPrimeiraCondicao.Checked = false;
                 rdbSegundaCondicao.Enabled = false;
+                rdbSegundaCondicao.Checked = false;
+                rdbTerceiraCondicao.Enabled = false;
+                rdbTerceiraCondicao.Checked = false;
                 cboPrimeiraCondicao.Enabled = false;
                 cboSegundaCondicao.Enabled = false;
+                cboTerceiraCondicao.Enabled = false;
                 txtPrimeiroValor.Enabled = false;
                 txtSegundoValor.Enabled = false;
+                txtTerceiroValor.Enabled = false;
                 cboPrimeiraCondicao.Items.Clear();
                 cboSegundaCondicao.Items.Clear();
+                cboTerceiraCondicao.Items.Clear();
                 txtPrimeiroValor.Text = "";
                 txtSegundoValor.Text = "";
+                txtTerceiroValor.Text = "";
 
                 CarregarComboBox();
             }
@@ -362,18 +430,34 @@ namespace THR.Views.Expedicao
                             if (dataGridView1.Columns[i].DataPropertyName == "PesoTotal")
                             {
                                 ColorirDataGridCondicaoPeso(dataGridView1.Columns[i].DataPropertyName,
-                                                linha[j]["Condicao"].ToString(),
-                                                linha[j]["Valor"].ToString(),
-                                                R, G, B,
-                                                RLetra, GLetra, BLetra);
+                                                        linha[j]["Condicao"].ToString(),
+                                                        linha[j]["Valor"].ToString(),
+                                                        R, G, B,
+                                                        RLetra, GLetra, BLetra);
                             }
                             else if (dataGridView1.Columns[i].DataPropertyName == "TempoEspera")
                             {
                                 ColorirDataGridCondicaoTempo(dataGridView1.Columns[i].DataPropertyName,
-                                                linha[j]["Condicao"].ToString(),
-                                                linha[j]["Valor"].ToString(),
-                                                R, G, B,
-                                                RLetra, GLetra, BLetra);
+                                                            linha[j]["Condicao"].ToString(),
+                                                            linha[j]["Valor"].ToString(),
+                                                            R, G, B,
+                                                            RLetra, GLetra, BLetra);
+                            }
+                            else if (dataGridView1.Columns[i].DataPropertyName == "PorcentagemCarregada")
+                            {
+                                ColorirPorcentagem(dataGridView1.Columns[i].DataPropertyName,
+                                                        linha[j]["Condicao"].ToString(),
+                                                        linha[j]["Valor"].ToString(),
+                                                        R, G, B,
+                                                        RLetra, GLetra, BLetra);
+                            }
+                            else if (dataGridView1.Columns[i].DataPropertyName == "DataHoraLancamento")
+                            {
+                                ColorirDataHoraLancamento(dataGridView1.Columns[i].DataPropertyName,
+                                                        linha[j]["Condicao"].ToString(),
+                                                        linha[j]["Valor"].ToString(),
+                                                        R, G, B,
+                                                        RLetra, GLetra, BLetra);
                             }
                             else
                             {
@@ -381,7 +465,6 @@ namespace THR.Views.Expedicao
                                                 linha[j]["PalavraChave"].ToString(),
                                                 R, G, B,
                                                 RLetra, GLetra, BLetra);
-
                             }
                         }
                     }
@@ -398,6 +481,101 @@ namespace THR.Views.Expedicao
             }
 
         }
+
+        private void ColorirDataHoraLancamento(string coluna, string Condicao, string Valor, int R, int G, int B, int RLetra, int GLetra, int BLetra)
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "DataHoraLancamento")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        if (dataGridView1.Rows[j].Cells[i].Value.ToString() != string.Empty)
+                        {
+                            if(Condicao == "HOJE")
+                            {
+                                DateTime agora = DateTime.Now;
+                                DateTime horaLancamento = Convert.ToDateTime(dataGridView1.Rows[j].Cells[i].Value.ToString());
+
+                                string agoraString = Convert.ToString(agora.ToString("dd/MM/yyyy"));
+
+                                string lancamentoString = Convert.ToString(horaLancamento.ToString("dd/MM/yyyy"));
+
+                                if(agoraString == lancamentoString)
+                                {
+                                    dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
+                                    dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
+                                }
+
+                            }
+                            else if(Condicao == "ONTEM")
+                            {
+                                DateTime agora = DateTime.Now;
+                                DateTime horaLancamento = Convert.ToDateTime(dataGridView1.Rows[j].Cells[i].Value.ToString());
+
+                                string agoraString = Convert.ToString(agora.AddDays(-1).ToString("dd/MM/yyyy"));
+
+                                string lancamentoString = Convert.ToString(horaLancamento.ToString("dd/MM/yyyy"));
+
+                                if (agoraString == lancamentoString)
+                                {
+                                    dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
+                                    dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
+                                }
+                            } 
+
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        private void ColorirPorcentagem(string coluna, string Condicao, string Valor, int R, int G, int B, int RLetra, int GLetra, int BLetra)
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                if (dataGridView1.Columns[i].DataPropertyName == "PorcentagemCarregada")
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        if(dataGridView1.Rows[j].Cells[i].Value.ToString() != string.Empty)
+                        {
+                            double porcetagemCarregada = Convert.ToDouble(dataGridView1.Rows[j].Cells[i].Value.ToString().Replace("%", ""));
+
+                            double segundaCondicao = Convert.ToDouble(Valor);
+
+                            if (Condicao == "MAIOR")
+                            {
+                                if (porcetagemCarregada > segundaCondicao)
+                                {
+                                    dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
+                                    dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
+                                }
+                            }
+                            if (Condicao == "MENOR")
+                            {
+                                if (porcetagemCarregada < segundaCondicao)
+                                {
+                                    dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.FromArgb(R, G, B);
+                                    dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
+                                }
+                            }
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+
 
         private void ColorirDataGridCondicaoTempo(string coluna, string Condicao, string Valor, int R, int G, int B, int RLetra, int GLetra, int BLetra)
         {
@@ -435,7 +613,6 @@ namespace THR.Views.Expedicao
                                     dataGridView1.Rows[y].Cells[i].Style.ForeColor = Color.FromArgb(RLetra, GLetra, BLetra);
                                 }
                             }
-
 
 
                             if (Condicao == "MAIOR")
@@ -528,7 +705,8 @@ namespace THR.Views.Expedicao
         {
             for (int i = 0; i < dataGridView1.ColumnCount; i++)
             {
-                if (dataGridView1.Columns[i].DataPropertyName == coluna && dataGridView1.Columns[i].DataPropertyName != "PesoTotal" &&
+                if (dataGridView1.Columns[i].DataPropertyName == coluna && 
+                    dataGridView1.Columns[i].DataPropertyName != "PesoTotal" &&
                     dataGridView1.Columns[i].DataPropertyName != "TempoEspera")
                 {
                     for (int j = 0; j < dataGridView1.Rows.Count; j++)
@@ -569,10 +747,17 @@ namespace THR.Views.Expedicao
             this.Cursor = Cursors.WaitCursor;
 
             cboPrimeiraCondicao.Enabled = true;
-            txtPrimeiroValor.Enabled = true;
 
             cboSegundaCondicao.Enabled = false;
+            cboTerceiraCondicao.Enabled = false;
             txtSegundoValor.Enabled = false;
+            txtTerceiroValor.Enabled = false;
+
+            if(cboColuna.Text != "DataHoraLancamento")
+            {
+                txtPrimeiroValor.Enabled = true;
+
+            }
 
             CarregarCondicao();
 
@@ -585,9 +770,40 @@ namespace THR.Views.Expedicao
 
             cboPrimeiraCondicao.Enabled = false;
             txtPrimeiroValor.Enabled = false;
+            cboTerceiraCondicao.Enabled = false;
+            txtTerceiroValor.Enabled = false;
 
             cboSegundaCondicao.Enabled = true;
-            txtSegundoValor.Enabled = true;
+
+            if(cboColuna.Text != "DataHoraLancamento")
+            {
+                txtSegundoValor.Enabled = true;
+
+            }
+
+            CarregarCondicao();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void rdbTerceiraCondicao_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            cboPrimeiraCondicao.Enabled = false;
+            txtPrimeiroValor.Enabled = false;
+
+            cboSegundaCondicao.Enabled = false;
+            txtSegundoValor.Enabled = false;
+
+            cboTerceiraCondicao.Enabled = true;
+            txtTerceiroValor.Enabled = true;
+
+            if (cboColuna.Text != "DataHoraLancamento")
+            {
+                txtTerceiroValor.Enabled = true;
+
+            }
 
             CarregarCondicao();
 
@@ -597,6 +813,7 @@ namespace THR.Views.Expedicao
         private void CarregarCondicao()
         {
             var condicoes = coresService.SelectTableColors();
+            idVariavel = "";
             for (int i = 0; i < dataGridView1.ColumnCount; i++)
             {
                 var linha = condicoes.Select($"Coluna = '{cboColuna.Text}'");
@@ -616,6 +833,11 @@ namespace THR.Views.Expedicao
                             cboSegundaCondicao.Text = linha[1]["Condicao"].ToString();
 
                         }
+                        if(linha.Count() > 2)
+                        {
+                            txtTerceiroValor.Text = linha[2]["Valor"].ToString();
+                            cboTerceiraCondicao.Text = linha[2]["Condicao"].ToString();
+                        }
 
 
                         if (rdbPrimeiraCondicao.Checked)
@@ -628,6 +850,8 @@ namespace THR.Views.Expedicao
                             txtGreenLetra.Text = linha[j]["GLetra"].ToString();
                             txtBlueLetra.Text = linha[j]["BLetra"].ToString();
 
+                            idVariavel = linha[j]["ID"].ToString();
+
                             break;
 
                         }
@@ -636,13 +860,14 @@ namespace THR.Views.Expedicao
                             if (linha.Count() > 1)
                             {
 
-
                                 txtRedColuna.Text = linha[1]["RCelula"].ToString();
                                 txtGreenColuna.Text = linha[1]["GCelula"].ToString();
                                 txtBlueColuna.Text = linha[1]["BCelula"].ToString();
                                 txtRedLetra.Text = linha[1]["RLetra"].ToString();
                                 txtGreenLetra.Text = linha[1]["GLetra"].ToString();
                                 txtBlueLetra.Text = linha[1]["BLetra"].ToString();
+
+                                idVariavel = linha[1]["ID"].ToString();
 
                                 break;
 
@@ -651,15 +876,42 @@ namespace THR.Views.Expedicao
                             else
                             {
 
-
                                 txtRedColuna.Text = "0";
                                 txtGreenColuna.Text = "0";
                                 txtBlueColuna.Text = "0";
                                 txtRedLetra.Text = "0";
                                 txtGreenLetra.Text = "0";
                                 txtBlueLetra.Text = "0";
+                                idVariavel = "";
                             }
 
+                        }
+                        else if (rdbTerceiraCondicao.Checked)
+                        {
+                            if(linha.Count() > 2)
+                            {
+                                txtRedColuna.Text = linha[2]["RCelula"].ToString();
+                                txtGreenColuna.Text = linha[2]["GCelula"].ToString();
+                                txtBlueColuna.Text = linha[2]["BCelula"].ToString();
+                                txtRedLetra.Text = linha[2]["RLetra"].ToString();
+                                txtGreenLetra.Text = linha[2]["GLetra"].ToString();
+                                txtBlueLetra.Text = linha[2]["BLetra"].ToString();
+
+                                idVariavel = linha[2]["ID"].ToString();
+
+                                break;
+                            }
+                            else
+                            {
+                                txtRedColuna.Text = "0";
+                                txtGreenColuna.Text = "0";
+                                txtBlueColuna.Text = "0";
+                                txtRedLetra.Text = "0";
+                                txtGreenLetra.Text = "0";
+                                txtBlueLetra.Text = "0";
+                                idVariavel = "";
+
+                            }
                         }
 
                     }

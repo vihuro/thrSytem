@@ -101,7 +101,7 @@ namespace THR.DAO.Expedicao
             }
         }
 
-        public bool VerificarStatus(CarregamentosModel model)
+        public string VerificarStatus(CarregamentosModel model)
         {
             cmd = new OleDbCommand();
             cmd.CommandText = "SELECT * FROM tab_Carregamentos WHERE NumeroCarregamento = @NumeroCarregamento";
@@ -114,17 +114,10 @@ namespace THR.DAO.Expedicao
                 {
                     while (dr.Read())
                     {
-                        if (dr["Status"].ToString() == "FECHADO")
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            return true;
-                        }
+                        return dr["status"].ToString();
                     }
                 }
-                return false;
+                return "";
             }
             catch (Exception ex)
             {
@@ -139,8 +132,12 @@ namespace THR.DAO.Expedicao
 
         public DataTable SelectTable()
         {
+            DateTime hoje = DateTime.Now;
+            DateTime ontem = hoje.AddDays(-1);
+
             cmd = new OleDbCommand();
-            cmd.CommandText = "Select * from tab_Carregamentos order by numeroCarregamento asc";
+            cmd.CommandText = $"Select * from tab_Carregamentos WHERE DataHoraLancamento BETWEEN '{ontem}' " +
+                               $"AND '{hoje}' order by numeroCarregamento asc";
             try
             {
                 cmd.Connection = con.Conectar();
