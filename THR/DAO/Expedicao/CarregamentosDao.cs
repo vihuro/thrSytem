@@ -30,9 +30,9 @@ namespace THR.DAO.Expedicao
         {
             cmd = new OleDbCommand();
             cmd.CommandText = "Insert into tab_Carregamentos (NumeroRomaneio, NomeMotorista, Regiao, Periodo, Bolha, " +
-                                "Ondulado, UsuarioLancamento, DataHoraLancamento, Status, PesoTotal) Values (@NumeroRomaneio," +
+                                "Ondulado, UsuarioLancamento, DataHoraLancamento, Status, PesoTotal, Caminhao, Capacidade) Values (@NumeroRomaneio," +
                                 "@NomeMotorista ,@Regiao, @Periodo, @Bolha, @Ondulado, @UsuarioLancamento, @DataHoraLancamento, " +
-                                "@Status, @PesoTotal)";
+                                "@Status, @PesoTotal, @Caminhao, @Capacidade)";
             cmd.Parameters.AddWithValue("", model.NumeroRomaneio);
             cmd.Parameters.AddWithValue("", model.NomeMotorista);
             cmd.Parameters.AddWithValue("", model.Regiao);
@@ -43,6 +43,8 @@ namespace THR.DAO.Expedicao
             cmd.Parameters.AddWithValue("", model.DataHoraLancamento);
             cmd.Parameters.AddWithValue("", model.Status);
             cmd.Parameters.AddWithValue("", model.PesoTotal);
+            cmd.Parameters.AddWithValue("", model.Caminhao);
+            cmd.Parameters.AddWithValue("", model.Capacidade);
             try
             {
                 cmd.Connection = con.Conectar();
@@ -70,7 +72,10 @@ namespace THR.DAO.Expedicao
                                                         "Status = @Status," +
                                                         "UsuarioFim = @UsuarioFim," +
                                                         "DataHoraFim = @DataHoraFim," +
-                                                        "TempoEspera = @TempoEspera where " +
+                                                        "TempoEspera = @TempoEspera," +
+                                                        "PorcentagemCarregada = @PorcentagemCarregada," +
+                                                        "Capacidade = @Capacidade," +
+                                                        "Caminhao = @Caminhao where " +
                                                         "NumeroCarregamento = @NumeroCarregamento";
             cmd.Parameters.AddWithValue("", model.NumeroRomaneio);
             cmd.Parameters.AddWithValue("", model.NomeMotorista);
@@ -83,6 +88,9 @@ namespace THR.DAO.Expedicao
             cmd.Parameters.AddWithValue("", model.UsuarioFinalizacao);
             cmd.Parameters.AddWithValue("", model.DataHoraFinalizacao);
             cmd.Parameters.AddWithValue("", model.TempoEspera);
+            cmd.Parameters.AddWithValue("", model.PorcentagemCarregada);
+            cmd.Parameters.AddWithValue("", model.Capacidade);
+            cmd.Parameters.AddWithValue("", model.Caminhao);
             cmd.Parameters.AddWithValue("", model.NumeroCarregamento);
 
 

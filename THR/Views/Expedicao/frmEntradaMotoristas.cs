@@ -22,7 +22,7 @@ namespace THR.Views.Expedicao
         private LoginDto loginDto;
         private DataTable acessos;
         private CarregamentosController controller;
-        private CarregamentosDto dto;
+        public CarregamentosDto dto;
         private MessageCuston messageCuston;
         private ModuloService modulosService;
         private RegiaoController regiaoController;
@@ -334,8 +334,20 @@ namespace THR.Views.Expedicao
                 {
                     dto.Status = "EM ABERTO";
                 }
+                var lista = modulosService.ListaAcessos();
+                for (int i = 0; i < lista.Length; i++)
+                {
+                    if (modulosService.DefinirAcessos(acessos, lista[i]))
+                    {
+                        if (lista[i] == "Expedição - Admin")
+                        {
+                            frmEcolhaStatus status = new frmEcolhaStatus(dto,this);
+                            status.ShowDialog();
+                        }
+                    }
+                }
 
-                controller.Update(dto);
+                        controller.Update(dto);
 
                 CarregarDataGridNumero(dto.NumeroCarregamento);
 
@@ -395,8 +407,6 @@ namespace THR.Views.Expedicao
 
                 VerificarCheckeds();
 
-                VerificaPermissao();
-
                 if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
                 {
                     btnAlterar.Enabled = false;
@@ -405,6 +415,12 @@ namespace THR.Views.Expedicao
                 {
                     btnAlterar.Enabled = true;
                 }
+                if(dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO")
+                {
+                    rdbStatusFechado.Enabled = false;
+                }
+
+                VerificaPermissao();
 
             }
             this.Cursor = Cursors.Default;
@@ -415,37 +431,87 @@ namespace THR.Views.Expedicao
         {
 
             var lista = modulosService.ListaAcessos();
-            for(int i = 0; i < lista.Length; i++)
+
+            for (int i = 0; i < lista.Length; i++)
             {
                 if (modulosService.DefinirAcessos(acessos, lista[i]))
                 {
-                    if (lista[i] == "Expedição - Admin" || lista[i] == "Expedição - Comunicador")
+                    if (lista[i] == "Expedição - Alterações" || lista[i] == "Expedição - Comunicador")
                     {
-                        if (lista[i] == "Expedição - Comunicador")
+                        if(lista[i] == "Expedição - Alterações")
                         {
-                            txtNumeroCarregamento.ReadOnly = true;
-                            txtPesoTotal.ReadOnly = true;
-                            txtRomaneio.ReadOnly = true;
-                            cboCaminhao.Enabled = false;
-                            cboNomeMotorista.Enabled = false;
-                            cboRegiao.Enabled = false;
-                            rdbBolhaNao.Enabled = false;
-                            rdbBolhaSim.Enabled = false;
-                            rdbManha.Enabled = false;
-                            rdbNoite.Enabled = false;
-                            rdbOnduladoNao.Enabled = false;
-                            rdbOnduladoSim.Enabled = false;
-                            rdbStatusFechado.Enabled = false;
+                            ckbBloqueado.Enabled = false;
                         }
+                        if(dataGridView1.SelectedRows.Count > 0)
+                        {
+                            if (lista[i] == "Expedição - Comunicador" && 
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO" ||
+                                lista[i] == "Expedição - Comunicador" &&
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "EM ABERTO")
+                            {
+                                btnAlterar.Enabled = true;
+                                btnSalvar.Enabled = false;
+                            }
+                            if (lista[i] == "Expedição - Comunicador" ||
+                                lista[i] == "Expedição - Alterações" &&
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO" ||
+                                lista[i] == "Expedição - Alterações" &&
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
+                            {
+                                txtNumeroCarregamento.ReadOnly = true;
+                                txtPesoTotal.ReadOnly = true;
+                                txtRomaneio.ReadOnly = true;
+                                cboCaminhao.Enabled = false;
+                                cboNomeMotorista.Enabled = false;
+                                cboRegiao.Enabled = false;
+                                rdbBolhaNao.Enabled = false;
+                                rdbBolhaSim.Enabled = false;
+                                rdbManha.Enabled = false;
+                                rdbNoite.Enabled = false;
+                                rdbOnduladoNao.Enabled = false;
+                                rdbOnduladoSim.Enabled = false;
+                                rdbStatusFechado.Enabled = false;
+                                btnSalvar.Enabled = false;
+                                break;
+                            }
+                        }
+
                     }
+                    if (lista[i] == "Expedição - Admin" || lista[i] == "Expedição - Alterações")
+                    {
+                        if (dataGridView1.SelectedRows.Count > 0)
+                        {
+                            btnSalvar.Enabled = false;
+                            btnAlterar.Enabled = true;
+                        }
+                        else
+                        {
+                            btnSalvar.Enabled = true;
+                            btnAlterar.Enabled = false;
+                        }
+                        if (lista[i] == "Expedição - Admin")
+                        {
+
+                            ckbBloqueado.Enabled = true;
+                        }
+                        txtNumeroCarregamento.ReadOnly = false;
+                        txtPesoTotal.ReadOnly = false;
+                        txtRomaneio.ReadOnly = false;
+                        cboCaminhao.Enabled = true;
+                        cboNomeMotorista.Enabled = true;
+                        cboRegiao.Enabled = true;
+                        rdbBolhaNao.Enabled = true;
+                        rdbBolhaSim.Enabled = true;
+                        rdbManha.Enabled = true;
+                        rdbNoite.Enabled = true;
+                        rdbOnduladoNao.Enabled = true;
+                        rdbOnduladoSim.Enabled = true;
+                        rdbStatusFechado.Enabled = true;
+                        break;
+                    }
+
                 }
             }
-        }
-
-        private void AtivarbotoesExpedicao()
-        {
-
-
         }
 
         private void VerificarCheckeds()

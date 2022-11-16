@@ -201,3 +201,4 @@ C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.csproj.CoreCompileInput
 C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.csproj.CopyComplete
 C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.exe
 C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.pdb
+C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.frmEcolhaStatus.resources

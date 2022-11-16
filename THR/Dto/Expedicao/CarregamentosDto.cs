@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace THR.Dto.Expedicao
 {
-    internal class CarregamentosDto
+    public class CarregamentosDto
     {
         private string numeroCarregamento;
         private string numeroRomaneio;

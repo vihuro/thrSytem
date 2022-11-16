@@ -272,7 +272,7 @@ namespace THR.Views.Expedicao
                         }
                         else if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "BLOQUEADO")
                         {
-                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\human-skull.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\no-trucks.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
                         else
@@ -468,6 +468,7 @@ namespace THR.Views.Expedicao
 
                 CarregarTempoEspera();
                 CarregarPorcentagem();
+
             }
             catch (Exception ex)
             {
