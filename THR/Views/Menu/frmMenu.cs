@@ -100,8 +100,8 @@ namespace THR.Views.Menu
                 switch (modulosService.DefinirAcessos(acessos, permissoes))
                 {
                     case true:
-                        if(permissoes == "Expedição - Admin" || permissoes == "Expedição - Alterações" ||
-                            permissoes == "Expedição - Comunicador")
+                        if(permissoes == "Expedição - Admin" || permissoes == "Expedição - Externo" ||
+                            permissoes == "Expedição - Planejador" || permissoes == "Expedição - Comunicador")
                         {
                             btnControleMotoristas.Enabled = true;
                             if(permissoes == "Expedição - Admin")

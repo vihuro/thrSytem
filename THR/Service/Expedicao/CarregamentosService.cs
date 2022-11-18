@@ -111,17 +111,15 @@ namespace THR.Service.Expedicao
                                 dao.Update(model);
                                 break;
                             }
-                            if (lista[i] == "Expedição - Alterações" && status != "FECHADO")
+                            if (lista[i] == "Expedição - Planejador" && status != "FECHADO" ||
+                                lista[i] == "Expedição - Comunicador" && status != "FECHADO" ||
+                                lista[i] == "Expedição - Externo" && status != "FECHADO")
                             {
                                 dao.Update(model);
                                 break;
 
                             }
-                            if (lista[i] == "Expedição - Comunicador" && status != "FECHADO")
-                            {
-                                dao.Update(model);
-                                break;
-                            }
+
                             else if (i == lista.Length - 1)
                             {
                                 throw new ServiceException("Esse usuário não tem acesso para fazer essa alteração!");

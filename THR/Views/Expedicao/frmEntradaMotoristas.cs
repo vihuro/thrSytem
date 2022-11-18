@@ -224,6 +224,7 @@ namespace THR.Views.Expedicao
             ckbBloqueado.Checked = false;
             rdbStatusFechado.Checked = false;
             dataGridView1.ClearSelection();
+            btnAlterar.Enabled = false;
             VerificaPermissao();
 
             txtPesoTotal.Text = "0";
@@ -398,6 +399,8 @@ namespace THR.Views.Expedicao
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                btnSalvar.Enabled = false;
+
                 txtNumeroCarregamento.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 txtRomaneio.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 cboNomeMotorista.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
@@ -407,18 +410,6 @@ namespace THR.Views.Expedicao
 
                 VerificarCheckeds();
 
-                if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
-                {
-                    btnAlterar.Enabled = false;
-                }
-                else
-                {
-                    btnAlterar.Enabled = true;
-                }
-                if(dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO")
-                {
-                    rdbStatusFechado.Enabled = false;
-                }
 
                 VerificaPermissao();
 
@@ -436,11 +427,46 @@ namespace THR.Views.Expedicao
             {
                 if (modulosService.DefinirAcessos(acessos, lista[i]))
                 {
-                    if (lista[i] == "Expedição - Alterações" || lista[i] == "Expedição - Comunicador")
+                    if (lista[i] == "Expedição - Externo" || 
+                        lista[i] == "Expedição - Comunicador" || 
+                        lista[i] == "Expedição - Planejador")
                     {
-                        if(lista[i] == "Expedição - Alterações")
+                        if(lista[i] == "Expedição - Externo")
                         {
                             ckbBloqueado.Enabled = false;
+                            rdbBolhaNao.Enabled = false;
+                            rdbBolhaSim.Enabled = false;
+                            rdbOnduladoNao.Enabled = false;
+                            rdbOnduladoSim.Enabled = false;
+                            txtPesoTotal.Enabled = false;
+                            txtRomaneio.Enabled = false;
+                            cboNomeMotorista.Enabled = true;
+                            cboCaminhao.Enabled = true;
+                            rdbManha.Enabled = true;
+                            rdbNoite.Enabled = true;
+
+                            if (dataGridView1.SelectedRows.Count == 0)
+                            {
+                                btnSalvar.Enabled = true;
+                            }
+
+                        }
+                        if (lista[i] == "Expedição - Planejador")
+                        {
+                            rdbBolhaNao.Enabled = true;
+                            rdbBolhaSim.Enabled = true;
+                            rdbOnduladoNao.Enabled = true;
+                            rdbOnduladoSim.Enabled = true;
+                            txtPesoTotal.Enabled = true;
+                            txtRomaneio.Enabled = true;
+                            cboNomeMotorista.Enabled = false;
+                            cboCaminhao.Enabled = false;
+                            rdbManha.Enabled = false;
+                            rdbNoite.Enabled = false;
+                            rdbStatusFechado.Enabled = false;
+                            ckbBloqueado.Enabled = false;
+                            cboRegiao.Enabled = false;
+
                         }
                         if(dataGridView1.SelectedRows.Count > 0)
                         {
@@ -450,15 +476,20 @@ namespace THR.Views.Expedicao
                                 dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "EM ABERTO")
                             {
                                 btnAlterar.Enabled = true;
-                                btnSalvar.Enabled = false;
+
                             }
-                            if (lista[i] == "Expedição - Comunicador" ||
-                                lista[i] == "Expedição - Alterações" &&
+                            else if (lista[i] == "Expedição - Comunicador" ||
+                                lista[i] == "Expedição - Externo" &&
                                 dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO" ||
-                                lista[i] == "Expedição - Alterações" &&
+                                lista[i] == "Expedição - Externo" &&
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO" ||
+                                lista[i] == "Expedição - Planejador" &&
+                                dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO" ||
+                                lista[i] == "Expedição - Planejador" &&
                                 dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
                             {
-                                txtNumeroCarregamento.ReadOnly = true;
+                                btnAlterar.Enabled = false;
+                                /*txtNumeroCarregamento.ReadOnly = true;
                                 txtPesoTotal.ReadOnly = true;
                                 txtRomaneio.ReadOnly = true;
                                 cboCaminhao.Enabled = false;
@@ -471,13 +502,17 @@ namespace THR.Views.Expedicao
                                 rdbOnduladoNao.Enabled = false;
                                 rdbOnduladoSim.Enabled = false;
                                 rdbStatusFechado.Enabled = false;
-                                btnSalvar.Enabled = false;
-                                break;
+                                btnSalvar.Enabled = false;*/
+                                //break;
+                            }
+                            else
+                            {
+                                btnAlterar.Enabled = true;
                             }
                         }
 
                     }
-                    if (lista[i] == "Expedição - Admin" || lista[i] == "Expedição - Alterações")
+                    if (lista[i] == "Expedição - Admin")
                     {
                         if (dataGridView1.SelectedRows.Count > 0)
                         {
@@ -529,11 +564,11 @@ namespace THR.Views.Expedicao
 
             if (dataGridView1.SelectedRows[0].Cells[5].Value.ToString() == "NÃO")
             {
-                rdbBolhaSim.Checked = true;
+                rdbBolhaNao.Checked = true;
             }
             else
             {
-                rdbBolhaNao.Checked = true;
+                rdbBolhaSim.Checked = true;
             }
 
             if (dataGridView1.SelectedRows[0].Cells[6].Value.ToString() == "SIM")
