@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THR", "THR\THR.csproj", "{6A6785C7-A769-4E33-82A9-9C1322528A46}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador", "Instalador\Instalador.vdproj", "{40DEAA71-73D9-451C-8049-FD26FB888A32}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador THR", "Instalador THR\Instalador THR.vdproj", "{D42EDF89-F981-4FD4-9A9B-2E66747F6EF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{6A6785C7-A769-4E33-82A9-9C1322528A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A6785C7-A769-4E33-82A9-9C1322528A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A6785C7-A769-4E33-82A9-9C1322528A46}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40DEAA71-73D9-451C-8049-FD26FB888A32}.Debug|Any CPU.ActiveCfg = Debug
-		{40DEAA71-73D9-451C-8049-FD26FB888A32}.Release|Any CPU.ActiveCfg = Release
+		{D42EDF89-F981-4FD4-9A9B-2E66747F6EF4}.Debug|Any CPU.ActiveCfg = Debug
+		{D42EDF89-F981-4FD4-9A9B-2E66747F6EF4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

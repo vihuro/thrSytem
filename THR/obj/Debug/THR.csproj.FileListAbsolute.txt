@@ -15,17 +15,6 @@ C:\Users\thr\source\repos\THR\THR\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\EnvDTE.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\stdole.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\EnvDTE.xml
-C:\Users\thr\source\repos\THR\THR\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-C:\Users\thr\source\repos\THR\THR\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Users\thr\source\repos\THR\THR\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
@@ -202,3 +191,4 @@ C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.csproj.CopyComplete
 C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.exe
 C:\Users\thr\Desktop\Projetos\thrSytem\THR\obj\Debug\THR.pdb
 C:\Users\thr\source\repos\THR\THR\obj\Debug\THR.Views.Expedicao.frmEcolhaStatus.resources
+C:\Users\thr\source\repos\THR\THR\bin\Debug\Microsoft.ReportViewer.WebForms.DLL

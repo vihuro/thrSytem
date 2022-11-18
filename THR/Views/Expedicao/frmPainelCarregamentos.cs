@@ -262,22 +262,22 @@ namespace THR.Views.Expedicao
                     {
                         if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "EM ABERTO")
                         {
-                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Aberto.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\Aberto.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
                         else if(dataGridView1.Rows[j].Cells[i].Value.ToString() == "FECHADO")
                         {
-                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Fechado.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\Fechado.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
                         else if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "BLOQUEADO")
                         {
-                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\no-trucks.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\no-trucks.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
                         else
                         {
-                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\Aberto.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\Aberto.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
 
@@ -297,12 +297,12 @@ namespace THR.Views.Expedicao
                     {
                         if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "MANHÃ")
                         {
-                            dataGridView1.Rows[j].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\sun.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\sun.png".ToString());
                             dataGridView1.Columns["imagePeriodo"].DisplayIndex = 4;
                         }
                         else if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "NOITE")
                         {
-                            dataGridView1.Rows[j].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\THR\\Resources\\moon.png".ToString());
+                            dataGridView1.Rows[j].Cells["imagePeriodo"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\moon.png".ToString());
                             dataGridView1.Columns["imagePeriodo"].DisplayIndex = 4;
                         }
                     }

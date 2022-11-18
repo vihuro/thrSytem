@@ -468,7 +468,24 @@ namespace THR.Views.Expedicao
                             cboRegiao.Enabled = false;
 
                         }
-                        if(dataGridView1.SelectedRows.Count > 0)
+                        if (lista[i] == "Expedição - Comunicador")
+                        {
+                            rdbBolhaNao.Enabled = false;
+                            rdbBolhaSim.Enabled = false;
+                            rdbOnduladoNao.Enabled = false;
+                            rdbOnduladoSim.Enabled = false;
+                            txtPesoTotal.Enabled = false;
+                            txtRomaneio.Enabled = false;
+                            cboNomeMotorista.Enabled = false;
+                            cboCaminhao.Enabled = false;
+                            rdbManha.Enabled = false;
+                            rdbNoite.Enabled = false;
+                            rdbStatusFechado.Enabled = false;
+                            ckbBloqueado.Enabled = true;
+                            cboRegiao.Enabled = false;
+
+                        }
+                        if (dataGridView1.SelectedRows.Count > 0)
                         {
                             if (lista[i] == "Expedição - Comunicador" && 
                                 dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "BLOQUEADO" ||
