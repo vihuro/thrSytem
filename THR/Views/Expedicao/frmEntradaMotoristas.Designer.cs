@@ -52,6 +52,7 @@
             this.clnDataHoraFinalizacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ckbBloqueado = new System.Windows.Forms.CheckBox();
             this.cboCaminhao = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -82,7 +83,7 @@
             this.btnRelatorio = new System.Windows.Forms.Button();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.ckbBloqueado = new System.Windows.Forms.CheckBox();
+            this.rdbStatusReservado = new System.Windows.Forms.RadioButton();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -343,6 +344,16 @@
             this.clnPeso.ReadOnly = true;
             this.clnPeso.Width = 80;
             // 
+            // ckbBloqueado
+            // 
+            this.ckbBloqueado.AutoSize = true;
+            this.ckbBloqueado.Location = new System.Drawing.Point(448, 46);
+            this.ckbBloqueado.Name = "ckbBloqueado";
+            this.ckbBloqueado.Size = new System.Drawing.Size(77, 17);
+            this.ckbBloqueado.TabIndex = 24;
+            this.ckbBloqueado.Text = "Bloqueado";
+            this.ckbBloqueado.UseVisualStyleBackColor = true;
+            // 
             // cboCaminhao
             // 
             this.cboCaminhao.BackColor = System.Drawing.Color.White;
@@ -379,10 +390,11 @@
             // gpStatus
             // 
             this.gpStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpStatus.Controls.Add(this.rdbStatusReservado);
             this.gpStatus.Controls.Add(this.rdbStatusFechado);
-            this.gpStatus.Location = new System.Drawing.Point(981, 41);
+            this.gpStatus.Location = new System.Drawing.Point(915, 41);
             this.gpStatus.Name = "gpStatus";
-            this.gpStatus.Size = new System.Drawing.Size(123, 61);
+            this.gpStatus.Size = new System.Drawing.Size(189, 61);
             this.gpStatus.TabIndex = 12;
             this.gpStatus.TabStop = false;
             this.gpStatus.Text = "Status";
@@ -390,7 +402,7 @@
             // rdbStatusFechado
             // 
             this.rdbStatusFechado.AutoSize = true;
-            this.rdbStatusFechado.Location = new System.Drawing.Point(22, 26);
+            this.rdbStatusFechado.Location = new System.Drawing.Point(16, 26);
             this.rdbStatusFechado.Name = "rdbStatusFechado";
             this.rdbStatusFechado.Size = new System.Drawing.Size(67, 17);
             this.rdbStatusFechado.TabIndex = 12;
@@ -661,15 +673,16 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // ckbBloqueado
+            // rdbStatusReservado
             // 
-            this.ckbBloqueado.AutoSize = true;
-            this.ckbBloqueado.Location = new System.Drawing.Point(448, 46);
-            this.ckbBloqueado.Name = "ckbBloqueado";
-            this.ckbBloqueado.Size = new System.Drawing.Size(77, 17);
-            this.ckbBloqueado.TabIndex = 24;
-            this.ckbBloqueado.Text = "Bloqueado";
-            this.ckbBloqueado.UseVisualStyleBackColor = true;
+            this.rdbStatusReservado.AutoSize = true;
+            this.rdbStatusReservado.Location = new System.Drawing.Point(104, 26);
+            this.rdbStatusReservado.Name = "rdbStatusReservado";
+            this.rdbStatusReservado.Size = new System.Drawing.Size(77, 17);
+            this.rdbStatusReservado.TabIndex = 13;
+            this.rdbStatusReservado.TabStop = true;
+            this.rdbStatusReservado.Text = "Reservado";
+            this.rdbStatusReservado.UseVisualStyleBackColor = true;
             // 
             // frmControleCarregamentos
             // 
@@ -763,5 +776,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPeso;
         private System.Windows.Forms.CheckBox ckbBloqueado;
+        private System.Windows.Forms.RadioButton rdbStatusReservado;
     }
 }

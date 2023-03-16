@@ -18,9 +18,9 @@ namespace THR.DAO.Connection
 
         public ConnectionDao()
         {
-            //connection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\thr\\source\\repos\\THR\\bd_THR.accdb";
+            connection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\thr\\source\\repos\\THR\\bd_THR.accdb";
 
-            connection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=//192.168.1.238/carregamento/bd/bd_THR.accdb";
+           // connection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=//192.168.1.238/carregamento/bd/bd_THR.accdb";
 
             /*connection =
                 "Server=192.168.1.227;" +

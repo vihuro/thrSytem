@@ -275,6 +275,11 @@ namespace THR.Views.Expedicao
                             dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\no-trucks.png".ToString());
                             dataGridView1.Columns["imagem"].DisplayIndex = 9;
                         }
+                        else if (dataGridView1.Rows[j].Cells[i].Value.ToString() == "RESERVADO")
+                        {
+                            dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\encrypted.png".ToString());
+                            dataGridView1.Columns["imagem"].DisplayIndex = 9;
+                        }
                         else
                         {
                             dataGridView1.Rows[j].Cells["imagem"].Value = Image.FromFile("C:\\Program Files (x86)\\THR\\Instalador THR\\Resource\\Aberto.png".ToString());
@@ -537,8 +542,6 @@ namespace THR.Views.Expedicao
         private void timer1_Tick(object sender, EventArgs e)
         {
             seg++;
-            Console.WriteLine(seg);
-
             if (seg == 100)
             {
                 LoadGridView();

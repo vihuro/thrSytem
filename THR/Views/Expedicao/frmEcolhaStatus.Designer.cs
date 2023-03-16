@@ -54,10 +54,11 @@
             this.cboStatus.Items.AddRange(new object[] {
             "BLOQUEADO",
             "EM ABERTO",
-            "FECHADO"});
-            this.cboStatus.Location = new System.Drawing.Point(21, 28);
+            "FECHADO",
+            "RESERVADO"});
+            this.cboStatus.Location = new System.Drawing.Point(6, 28);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(151, 21);
+            this.cboStatus.Size = new System.Drawing.Size(202, 21);
             this.cboStatus.TabIndex = 0;
             // 
             // btnSalvar

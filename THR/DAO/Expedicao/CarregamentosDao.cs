@@ -143,9 +143,12 @@ namespace THR.DAO.Expedicao
             DateTime hoje = DateTime.Now;
             DateTime ontem = hoje.AddDays(-1);
 
+            string hojeString = Convert.ToString(hoje.ToString("dd/MM/yyyy"));
+            string ontemString = Convert.ToString(ontem.ToString("dd/MM/yyyy"));
+
             cmd = new OleDbCommand();
-            cmd.CommandText = $"Select * from tab_Carregamentos WHERE DataHoraLancamento BETWEEN '{ontem}' " +
-                               $"AND '{hoje}' order by numeroCarregamento asc";
+            cmd.CommandText = $"Select * from tab_Carregamentos WHERE DataHoraLancamento LIKE '%{ontemString}%' " +
+                               $"OR DataHoraLancamento LIKE '%{hojeString}%' order by NumeroRomaneio desc";
             try
             {
                 cmd.Connection = con.Conectar();

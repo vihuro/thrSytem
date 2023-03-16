@@ -153,6 +153,10 @@ namespace THR.Views.Expedicao
                         {
                             return "FECHADO";
                         }
+                        else if (control.Controls[i].Text == "Reservado")
+                        {
+                            return "RESERVADO";
+                        }
                         else
                         {
                             return "EM ABERTO";
@@ -223,6 +227,7 @@ namespace THR.Views.Expedicao
             rdbOnduladoSim.Checked = false;
             ckbBloqueado.Checked = false;
             rdbStatusFechado.Checked = false;
+            rdbStatusReservado.Checked = false;
             dataGridView1.ClearSelection();
             btnAlterar.Enabled = false;
             VerificaPermissao();
@@ -323,6 +328,7 @@ namespace THR.Views.Expedicao
                 dto.DataHoraLancamento = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
                 dto.PesoTotal = txtPesoTotal.Text;
                 dto.Caminhao = cboCaminhao.Text;
+
                 if (ckbBloqueado.Checked)
                 {
                     dto.Status = "BLOQUEADO";
@@ -330,6 +336,10 @@ namespace THR.Views.Expedicao
                 else if (rdbStatusFechado.Checked)
                 {
                     dto.Status = "FECHADO";
+                }
+                else if (rdbStatusReservado.Checked)
+                {
+                    dto.Status = "RESERVADO";
                 }
                 else
                 {
@@ -348,7 +358,7 @@ namespace THR.Views.Expedicao
                     }
                 }
 
-                        controller.Update(dto);
+                controller.Update(dto);
 
                 CarregarDataGridNumero(dto.NumeroCarregamento);
 
@@ -438,6 +448,7 @@ namespace THR.Views.Expedicao
                             rdbBolhaSim.Enabled = false;
                             rdbOnduladoNao.Enabled = false;
                             rdbOnduladoSim.Enabled = false;
+                            rdbStatusReservado.Enabled = false;
                             txtPesoTotal.Enabled = false;
                             txtRomaneio.Enabled = false;
                             cboNomeMotorista.Enabled = true;
@@ -459,6 +470,7 @@ namespace THR.Views.Expedicao
                             rdbOnduladoSim.Enabled = true;
                             txtPesoTotal.Enabled = true;
                             txtRomaneio.Enabled = true;
+                            rdbStatusReservado.Enabled = true;
                             cboNomeMotorista.Enabled = false;
                             cboCaminhao.Enabled = false;
                             rdbManha.Enabled = false;
@@ -483,6 +495,7 @@ namespace THR.Views.Expedicao
                             rdbStatusFechado.Enabled = false;
                             ckbBloqueado.Enabled = true;
                             cboRegiao.Enabled = false;
+                            rdbStatusReservado.Enabled = false;
 
                         }
                         if (dataGridView1.SelectedRows.Count > 0)
@@ -601,7 +614,11 @@ namespace THR.Views.Expedicao
             {
                 ckbBloqueado.Checked = true;
             }
-            if(dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
+            if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "RESERVADO")
+            {
+                rdbStatusReservado.Checked = true;
+            }
+            if (dataGridView1.SelectedRows[0].Cells[9].Value.ToString() == "FECHADO")
             {
                 rdbStatusFechado.Checked = true;
             }
